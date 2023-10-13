@@ -1,0 +1,73 @@
+/* 
+START OF DOCUMENTATION
+    ROOT: 
+        -colors
+        -spacing
+        -fonts
+    GENERAL:
+        -reset
+        -body
+        -heading
+        -blocks
+        -inline
+        -links
+    PRODUCT CARDS:
+
+END OF DOCUMENTATION */
+:root {
+    /* COLORS */
+    /* primary */
+    --clr_prm-900: ;
+    --clr_prm-700: ;
+    --clr_prm-400: ;
+    /* secondary */
+    --clr_sec-900: ;
+    --clr_sec-700: ;
+    --clr_sec-400: ;
+    /* tetriary */
+    --clr_tri-900: ;
+    --clr_tri-700: ;
+    --clr_tri-400: ;
+    /* SPACING */
+    /* padding */
+    --pd_xl: ;
+    --pd_lrg: ;
+    --pd_semi: ;
+    --pd_med: ;
+    --pd_reg: ;
+    --pd_sml: ;
+    --pd_xsm: ;
+    /* margin */
+    --mg_xl: ;
+    --mg_lrg: ;
+    --mg_semi: ;
+    --mg_med: ;
+    --mg_reg: ;
+    --mg_sml: ;
+    --mg_xsm: ;
+    /* FONTS */
+    /* size */
+    --fs_xl: ;
+    --fs_lrg: ;
+    --fs_semi: ;
+    --fs_med: ;
+    --fs_reg: ;
+    --fs_sml: ;
+    --fs_xsm: ;
+    /* weight */
+    --fw_xl: ;
+    --fw_lrg: ;
+    --fw_semi: ;
+    --fw_med: ;
+    --fw_reg: ;
+    --fw_sml: ;
+    --fw_xsm: ;
+}
+
+/* PRODUCT CARDS */
+
+.card__product {
+    width: 200px;
+    height: 400px;
+    background-color: aqua;
+}
