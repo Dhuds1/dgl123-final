@@ -47,27 +47,107 @@ END OF DOCUMENTATION */
     --mg_xsm: ;
     /* FONTS */
     /* size */
-    --fs_xl: ;
-    --fs_lrg: ;
-    --fs_semi: ;
-    --fs_med: ;
-    --fs_reg: ;
-    --fs_sml: ;
-    --fs_xsm: ;
+    --fs_xl: 2.4rem;
+    --fs_lrg: 2.2rem;
+    --fs_semi: 2rem;
+    --fs_med: 1.6rem;
+    --fs_reg: 1.5rem;
+    --fs_sml: 1.3rem;
+    --fs_xsm: 1.2rem;
     /* weight */
-    --fw_xl: ;
-    --fw_lrg: ;
-    --fw_semi: ;
-    --fw_med: ;
-    --fw_reg: ;
+    --fw_xl: 900;
+    --fw_semi: 700;
+    --fw_med: 500;
+    --fw_reg: 400;
     --fw_sml: ;
     --fw_xsm: ;
+    /* family */
+    --fa_default: 'Roboto', sans-serif;
+    /* BORDER */
+    --brd_thin-grey: 1px solid grey;
 }
-
+/* GENERAL */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: var(--fa_default);
+    font-weight: var(--fw_reg);
+    font-size: var(--fs_reg);
+}
+h1,
+h2 {
+    font-weight: var(--fw_semi);
+}
+h1 {
+    font-weight: var(--fs_xl);
+}
+h2 {
+    font-size: var(--fs_semi);
+}
+h3 {
+    font-weight: var(--fw_reg);
+    font-size: var(--fs_med);
+}
+.wrapper {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
 /* PRODUCT CARDS */
-
+.card__wrapper{
+    list-style-type: none;
+}
 .card__product {
-    width: 200px;
-    height: 400px;
-    background-color: aqua;
+    width: 250px;
+    position: relative;
+    color: black;
+}
+.card__product a {
+    text-decoration: none;
+    color: inherit;
+}
+.card__product-image {
+    width: 250px;
+    height: 250px;
+    aspect-ratio: 1;
+    background: white;
+    border: var(--brd_thin-grey);
+    position: relative;
+}
+.card__product-wishlist {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+}
+.card__product h2,
+.card__product h3 {
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.card__product h3 {
+    font-size: var(--fs_sml);
+}
+.card__product h2 {
+    font-size: var(--fs_med);
+}
+h2.card__product-price {
+    font-size: var(--fs_lrg);
+    margin: 10px 0;
+}
+.card__btn-cart {
+    padding: 5px 10px;
+    display: inline-block;
+    background-color: white;
+    border-radius: 50vw;
+    border: var(--brd_thin-grey);
 }
