@@ -12,7 +12,4 @@ Hello <h1><?= $user_name ?></h1>
     <li>
         <a href="">Store</a>
     </li>
-    <li>
-        <a href=""></a>
-    </li>
 </ul>
