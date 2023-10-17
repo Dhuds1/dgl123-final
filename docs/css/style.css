@@ -102,6 +102,60 @@ h3 {
     margin: auto;
     margin-top: 20px;
 }
+/* NAVIGATION BAR */
+.nav__bar-main {
+    background: blue;
+    height: 100vh;
+    width: 120px;
+    position: fixed;
+    top: 0;
+}
+.nav__bar-main ul {
+    display: flex;
+    height: 90%;
+    position: absolute;
+    top: 10%;
+    left: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.nav__bar-main ul li {
+    width: 90px;
+    height: 90px;
+    aspect-ratio: 1;
+    background-color: azure;
+    list-style-type: none;
+}
+.nav__bar-main ul li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* SEARCH BAR */
+.search__bar-wrapper {
+    display: flex;
+    position: sticky;
+    justify-content: center;
+    top: 10px;
+}
+.search__bar {
+    max-width: 400px;
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+}
+.search__bar, 
+.search__bar-button {
+    height: 30px;
+}
+.search__bar-button {
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    padding: 5px;
+}
 /* PRODUCT CARDS */
 .card__wrapper{
     list-style-type: none;
