@@ -1,6 +1,7 @@
 <?php
-    $user_logged = false;
+    $user_logged = true;
     $user_store = false;
+    $public_wishlist = false;
 ?>
 <div class="search__bar-wrapper"><input class="search__bar" name="search__bar" type="text" placeholder="Search"><button for="search__bar" class="search__bar-button">Search</button></div>
 <nav class="nav__bar-main">
@@ -10,9 +11,16 @@
             <li>
                 <a href="/">Home</a>
             </li>
-            <li>
-                <a href="">Wishlist</a>
-            </li>
+            <?php
+            if($user_logged){
+                echo
+                "
+                <li>
+                    <a href='&wishlist=$user_name&public=$public_wishlist'>Wishlist</a>
+                </li>
+                ";
+            }
+            ?>
             <li>
                 <a href="">Store</a>
             </li>
