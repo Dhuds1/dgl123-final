@@ -1,12 +1,11 @@
-<form method="get" class="search__bar-wrapper"><input class="search__bar" name="search__bar" type="text" placeholder="Search"><button type="submit" for="search__bar" class="search__bar-button">Search</button>
-<?php
-    if($_SERVER['REQUEST_METHOD'] === ['GET']){
-        
-    }
-?>
+<form method="get" class="search__bar-wrapper"><input class="search__bar" name="search_bar" type="text" placeholder="Search"><button type="submit" for="search_bar" class="search__bar-button">Search</button>
 </form>
 <nav class="nav__bar-main">
-    <h1>Hello, <?= $user_name ?>!</h1>
+    <h1>Welcome<?php
+        if($user_name){
+           echo ", $user_name";
+        }
+    ?>!</h1>
     <ul>
         <div>
             <li>
@@ -17,17 +16,16 @@
                 echo
                 "
                 <li>
-                    <a href='&wishlist=$user_name'>Wishlist</a>
+                    <a href='$user_name'>Wishlist</a>
                 </li>
                 ";
             }
             ?>
-            <?php
-            if($user_logged && $user_store){
+            <?php if($user_logged && $user_store): ?>
                 echo "
                 <div>
                 <li>
-                <a href='$store_name'>Store</a>
+                <a href=<?=$store_info['info']?>>Store</a>
                 </li>
                 <li>
                 <a href=''>Manage Store</a>
@@ -35,35 +33,30 @@
                 <li>
                 <a href='$store_name/products'>Manage Products</a>
                 </li>
-                </div>";}
-            elseif($user_logged && !$user_store){
-                echo "
+                </div>
+
+            <?php elseif($user_logged && !$user_store): ?>
                 <div>
                 <li>
                 <a href='createStore'>Create Store</a>
                 </li>
                 </div>
-                ";}
-            ?>
+            <?php endif; ?>
             </div>
             <div>
-            <?php
-            if($user_logged){
-            echo "
+            <?php if($user_logged): ?>
             <li>
             <a href=''>Profile</a>
             </li>
             <li>
             <a href=''>Settings</a>
             </li>
-            ";}
-            else {
+            <?php else: ?>
                 echo "
                 <li>
                 <a href='loginSignup'>Login or SignUp</a>
                 </li>
-                ";}
-            ?>
+            <?php endif; ?>
         </div>
     </ul>
 </nav>

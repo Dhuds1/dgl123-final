@@ -84,6 +84,9 @@ body {
     font-weight: var(--fw_reg);
     font-size: var(--fs_reg);
 }
+h1 {
+    text-transform:capitalize;
+}
 h1,
 h2 {
     font-weight: var(--fw_semi);
@@ -156,6 +159,7 @@ h3 {
     max-width: 400px;
     width: 50%;
     border-radius: 10px 0 0 10px;
+    padding: 10px
 }
 .search__bar, 
 .search__bar-button {
@@ -228,4 +232,5 @@ h2.card__product-price {
     background-color: white;
     border-radius: 50vw;
     border: var(--brd_thin-grey);
+    cursor: pointer;
 }
