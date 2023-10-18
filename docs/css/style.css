@@ -108,6 +108,13 @@ h3 {
     margin-top: 20px;
 }
 /* NAVIGATION BAR */
+.nav__wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
 .nav__bar-main {
     background: #222;
     height: 100vh;
@@ -233,4 +240,58 @@ h2.card__product-price {
     border-radius: 50vw;
     border: var(--brd_thin-grey);
     cursor: pointer;
+}
+/* STORE */
+.store__header-wrapper {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.store__banner-graphics {
+    height: 600px;
+    position: relative;
+}
+.store__banner-image {
+    width: 100%;
+    height: 100%;
+    background-color: #222222;
+    z-index: 2;
+    margin: auto;
+}
+.store__front-image {
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1;
+    border-radius: 50vw;
+    background-color: pink;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* socials */
+.store__socials {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    width: calc(50% - 100px);
+}
+.store__socials ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.store__socials ul li {
+    list-style-type: none;
+    text-decoration: none;
+
+    font-size: var(--fs_med);
+    font-weight: var(--fw_semi);
+    color: white;
 }

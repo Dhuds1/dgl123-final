@@ -1,3 +1,4 @@
+<div class="nav__wrapper">
 <form method="get" class="search__bar-wrapper"><input class="search__bar" name="search_bar" type="text" placeholder="Search"><button type="submit" for="search_bar" class="search__bar-button">Search</button>
 </form>
 <nav class="nav__bar-main">
@@ -9,20 +10,20 @@
     <ul>
         <div>
             <li>
-                <a href="/">Home</a>
+                <a href="/index">Home</a>
             </li>
             <?php if($user_logged): ?>
                 <li>
-                    <a href='<?= $user_name.'/wishlist' ?>'>Wishlist</a>
+                    <a href=<?= "$user_name/wishlist" ?>>Wishlist</a>
                 </li>
             <?php endif; ?>
             <?php if($user_logged && $user_store): ?>
                 <div>
                 <li>
-                <a href=<?=$store_info['name']?>>Store</a>
+                <a href="store">Store</a>
                 </li>
                 <li>
-                <a href='<?= $store_info['name'].'/manage' ?>'>Manage Store</a>
+                <a href=<?= $store_info['name'].'/manage' ?>>Manage Store</a>
                 </li>
                 <li>
                 <a href='<?= $store_info['name'].'/products' ?>'>Manage Products</a>
@@ -40,10 +41,10 @@
             <div>
             <?php if($user_logged): ?>
             <li>
-            <a href=''>Profile</a>
+            <a href=<?= "$user_name/profile" ?>>Profile</a>
             </li>
             <li>
-            <a href=''>Settings</a>
+            <a href=<?= "$user_name/settings" ?>>Settings</a>
             </li>
             <?php else: ?>
                 echo "
@@ -54,3 +55,4 @@
         </div>
     </ul>
 </nav>
+</div>

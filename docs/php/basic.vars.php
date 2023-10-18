@@ -8,6 +8,10 @@ $store_info = [
     "orders_total" => 99,
     "name" => "store-name",
     "display_name" => "Store Name",
+    "store_banner" => "#",
+    "store_banner_alt" => "",
+    "store_image" => "#",
+    "store_image_alt" => "",
 ];
 
 // PRODUCT VARS, CHILD OF STORE
