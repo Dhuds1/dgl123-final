@@ -25,17 +25,17 @@
          </div>
          </div>
          <div class="store__stats">
-            <span><b>Sales</b><br><?= $store_info['orders_total'] ?></span>
-            <span><b>Items</b><br><?= $store_info['items_total'] ?></span>
-            <span><b>Reviews</b><br><?= $store_info['reviews'] ?></span>
+            <span><b>Sales</b><br><?= $store['orders_total'] ?></span>
+            <span><b>Items</b><br><?= $store['items_total'] ?></span>
+            <span><b>Reviews</b><br><?= $store['reviews'] ?></span>
          </div>
       </div>
       <div class="store__info">
          <div>
-            <h1><?= $store_info['display_name']?><h1>
+            <h1><?= $store['display_name']?><h1>
          </div>
          <div>
-            <h2><?= $store_info['tagline']?></h2>
+            <h2><?= $store['tagline']?></h2>
          </div>
       </div>
    </div>
@@ -43,5 +43,5 @@
    <hr>
 </div>
 <div class="wrapper">
-   <?php require "product.comp.php" ?>
+   <?php require "product.loader.php" ?>
 </div>

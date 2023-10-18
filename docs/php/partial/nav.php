@@ -20,10 +20,10 @@
                 <a href="store">Store</a>
                 </li>
                 <li>
-                <a href=<?= $store_info['name'].'/manage' ?>>Manage Store</a>
+                <a href=<?= $store['name'].'/manage' ?>>Manage Store</a>
                 </li>
                 <li>
-                <a href='<?= $store_info['name'].'/products' ?>'>Manage Products</a>
+                <a href='<?= $store['name'].'/products' ?>'>Manage Products</a>
                 </li>
                 </div>
 

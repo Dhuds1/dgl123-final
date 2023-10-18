@@ -3,7 +3,7 @@
 $user_name = "evelynn";
 $addto_user_cart = "send this information to user cart";
 // STORE VARS
-$store_info = [
+$store = [
     "rating" => 4.4,
     "reviews" => 9,
     "orders_total" => 999,
@@ -18,16 +18,62 @@ $store_info = [
 ];
 
 // PRODUCT VARS, CHILD OF STORE
-$product_info = [
-        "store_name" => $store_info['display_name'],
-        "store_rating" => $store_info['rating'],
-        "store_reviews" => $store_info['reviews'],
-        "store_total_orders" => $store_info["orders_total"],
+$product = [
+    [  
+        "store_name" => $store['display_name'],
+        "store_rating" => $store['rating'],
+        "store_reviews" => $store['reviews'],
+        "store_total_orders" => $store["orders_total"],
         "name" => "product name",
         "post_page" => "product",
         "image_thumb" => "#",
         "image_alt" => "",
         "price" => 99,
+    ],
+    [  
+        "store_name" => $store['display_name'],
+        "store_rating" => $store['rating'],
+        "store_reviews" => $store['reviews'],
+        "store_total_orders" => $store["orders_total"],
+        "name" => "product name",
+        "post_page" => "product",
+        "image_thumb" => "#",
+        "image_alt" => "",
+        "price" => 99,
+    ],
+    [  
+        "store_name" => $store['display_name'],
+        "store_rating" => $store['rating'],
+        "store_reviews" => $store['reviews'],
+        "store_total_orders" => $store["orders_total"],
+        "name" => "product name",
+        "post_page" => "product",
+        "image_thumb" => "#",
+        "image_alt" => "",
+        "price" => 99,
+    ],
+    [  
+        "store_name" => $store['display_name'],
+        "store_rating" => $store['rating'],
+        "store_reviews" => $store['reviews'],
+        "store_total_orders" => $store["orders_total"],
+        "name" => "product name",
+        "post_page" => "product",
+        "image_thumb" => "#",
+        "image_alt" => "",
+        "price" => 99,
+    ],
+    [  
+        "store_name" => $store['display_name'],
+        "store_rating" => $store['rating'],
+        "store_reviews" => $store['reviews'],
+        "store_total_orders" => $store["orders_total"],
+        "name" => "product name",
+        "post_page" => "product",
+        "image_thumb" => "#",
+        "image_alt" => "",
+        "price" => 99,
+    ],
     
 ];
 
