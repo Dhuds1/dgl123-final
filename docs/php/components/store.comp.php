@@ -38,6 +38,10 @@
             <h2><?= $store_info['tagline']?></h2>
          </div>
       </div>
-      </div>
+   </div>
+   <?php require "filters.comp.php" ?>
+   <hr>
 </div>
-<hr>
+<div class="wrapper">
+   <?php require "product.comp.php" ?>
+</div>

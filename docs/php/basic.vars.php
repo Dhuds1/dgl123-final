@@ -19,12 +19,16 @@ $store_info = [
 
 // PRODUCT VARS, CHILD OF STORE
 $product_info = [
-    "store" => $store_info['name'],
-    "name" => "product name",
-    "post_page" => "product",
-    "image_thumb" => "#",
-    "image_alt" => "",
-    "price" => 99,
+        "store_name" => $store_info['display_name'],
+        "store_rating" => $store_info['rating'],
+        "store_reviews" => $store_info['reviews'],
+        "store_total_orders" => $store_info["orders_total"],
+        "name" => "product name",
+        "post_page" => "product",
+        "image_thumb" => "#",
+        "image_alt" => "",
+        "price" => 99,
+    
 ];
 
 // NAV VARIABLES
