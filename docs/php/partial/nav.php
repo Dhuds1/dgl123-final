@@ -1,9 +1,5 @@
-<?php
-    $user_logged = true;
-    $user_store = false;
-    $public_wishlist = false;
-?>
-<div class="search__bar-wrapper"><input class="search__bar" name="search__bar" type="text" placeholder="Search"><button for="search__bar" class="search__bar-button">Search</button></div>
+<form method="get" class="search__bar-wrapper"><input class="search__bar" name="search__bar" type="text" placeholder="Search"><button type="submit" for="search__bar" class="search__bar-button">Search</button>
+</form>
 <nav class="nav__bar-main">
     <h1>Hello, <?= $user_name ?>!</h1>
     <ul>
@@ -16,44 +12,53 @@
                 echo
                 "
                 <li>
-                    <a href='&wishlist=$user_name&public=$public_wishlist'>Wishlist</a>
+                    <a href='&wishlist=$user_name'>Wishlist</a>
                 </li>
                 ";
             }
             ?>
-            <li>
-                <a href="">Store</a>
-            </li>
             <?php
             if($user_logged && $user_store){
                 echo "
                 <div>
                 <li>
+                <a href='$store_name'>Store</a>
+                </li>
+                <li>
                 <a href=''>Manage Store</a>
                 </li>
                 <li>
-                <a href=''>Manage Products</a>
+                <a href='$store_name/products'>Manage Products</a>
                 </li>
-                </div>";
-            }
-            else {
+                </div>";}
+            elseif($user_logged && !$user_store){
                 echo "
                 <div>
                 <li>
-                <a href=''>Create Store</a>
+                <a href='createStore'>Create Store</a>
                 </li>
                 </div>
-                ";
-            }
+                ";}
             ?>
             </div>
-        <div>
+            <div>
+            <?php
+            if($user_logged){
+            echo "
             <li>
-                <a href="">Profile</a>
+            <a href=''>Profile</a>
             </li>
             <li>
-                <a href="">Settings</a>
+            <a href=''>Settings</a>
             </li>
+            ";}
+            else {
+                echo "
+                <li>
+                <a href='loginSignup'>Login or SignUp</a>
+                </li>
+                ";}
+            ?>
         </div>
     </ul>
 </nav>

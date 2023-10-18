@@ -105,7 +105,7 @@ h3 {
 }
 /* NAVIGATION BAR */
 .nav__bar-main {
-    background: blue;
+    background: #222;
     height: 100vh;
     width: 120px;
     position: fixed;
@@ -128,8 +128,8 @@ h3 {
     width: 90px;
     height: 90px;
     aspect-ratio: 1;
-    background-color: azure;
     list-style-type: none;
+    color: white;
 }
 .nav__bar-main ul li a {
     height: 100%;
@@ -137,6 +137,12 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: inherit;
+    text-decoration: none;
+}
+.nav__bar-main ul li:hover {
+    background-color: #ffffff40;
+    color: pink;
 }
 /* SEARCH BAR */
 .search__bar-wrapper {
