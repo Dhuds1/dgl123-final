@@ -11,7 +11,18 @@ START OF DOCUMENTATION
         -blocks
         -inline
         -links
+    NAVIGATION:
+        NAV BAR
+        SEARCH BAR
     PRODUCT CARDS:
+    STORE:
+        -graphics
+            -banner
+            -logo
+        -text
+            -contact buttons
+            -store stats
+            -store name
 
 END OF DOCUMENTATION */
 :root {
