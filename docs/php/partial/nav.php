@@ -11,7 +11,7 @@
             </li>
             <?php if($user_logged): ?>
                 <li>
-                    <a href=<?= "$user_name/wishlist" ?>>Wishlist</a>
+                    <a href=<?= "wishlist" ?>>Wishlist</a>
                 </li>
             <?php endif; ?>
             <?php if($user_logged && $user_store): ?>
