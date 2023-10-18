@@ -14,6 +14,7 @@ $store_info = [
     "store_banner_alt" => "",
     "store_image" => "#",
     "store_image_alt" => "",
+    "tagline" => "The More You Eat",
 ];
 
 // PRODUCT VARS, CHILD OF STORE

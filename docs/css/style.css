@@ -156,27 +156,38 @@ h3 {
 }
 /* SEARCH BAR */
 .search__bar-wrapper {
+    width: 100%;
+    height: 40px;
     display: flex;
-    position: relative;
-    top: 20px;
-    justify-content: center;
-}
-.search__bar {
-    max-width: 400px;
-    width: 50%;
-    border-radius: 10px 0 0 10px;
     position: fixed;
-    top: 20px;
+    top: 30px;
+    right: 0;
+    justify-content: center;
     z-index: 999;
 }
-.search__bar, 
-.search__bar-button {
-    height: 30px;
+.search__bar {
+    background-color: white;
+    width: 400px;
+    display: flex;
+    border-radius: 50vw;
+    padding-inline: 20px;
+}
+.search__bar-input {
+    width: 100%;
 }
 .search__bar-button {
+    height: 100%;
+    aspect-ratio: 1;
     cursor: pointer;
-    border-radius: 0 10px 10px 0;
-    padding: 5px;
+    margin-right: -20px
+}
+.search__bar-input:focus {
+    outline: red;
+}
+.search__bar-button,
+.search__bar-input {
+    background-color: transparent;
+    border: none;
 }
 /* FILTERS */
 .filter__block-wrapper {
@@ -243,15 +254,24 @@ h2.card__product-price {
     cursor: pointer;
 }
 /* STORE */
+.store__wrapper {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 .store__header-wrapper {
     width: 100%;
-    height: 600px;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 .store__banner-graphics {
     height: 600px;
+    position: relative;
+}
+.store__banner-text {
+    height: 200px;
     position: relative;
 }
 .store__banner-image {
@@ -271,23 +291,17 @@ h2.card__product-price {
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translate(calc(50% - var(--nav_width) * 2), 50px);
+    transform: translate(-50%, 50px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 /* socials */
-.store__wrapper {
-    width: calc(100% - var(--nav_width));
-    position: absolute;
-    top: 0;
-    right: 0;
-}
 .store__socials {
     position: absolute;
     right: 0;
     bottom: 15px;
-    width: 50%;
+    width: 40%;
 }
 .store__socials ul {
     display: flex;
@@ -308,9 +322,11 @@ h2.card__product-price {
     margin-top: var(--pd_15);
 }
 .store__contact-buttons {
-    width: calc(50% - var(--nav_width));
+    max-width: 500px;
+    width: 30%;
+    margin-left: 120px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .store__contact-buttons button {
     padding: 10px 5px;
@@ -320,10 +336,10 @@ h2.card__product-price {
     gap: 10px;
 }
 .store__stats {
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 30px;
     justify-content: center;
 }
 .store__stats span{
@@ -333,21 +349,33 @@ h2.card__product-price {
 }
 .store__info {
     margin-top: var(--pd_15);
-    background-color: #222;
     display: flex;
     justify-content: center;
     text-align: center;
 }
 /* TO FIX */
-.store__info > * {
-    transform: translate(calc(50% - calc(var(--nav_width) + 100px)));
+.store__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
 }
-.store__info h1 {
+.store__info div > * {
     text-align: center;
     text-transform: uppercase;
 }
-.store__info div {
-    width: 400px;
-    display: inline-block;
-    background-color: aqua;
+.store__info div:nth-child(1){
+    margin-top: calc(var(--pd_15) * 1.5);
+}
+.store__info div:nth-child(2){
+    margin-top: calc(var(--pd_15) / 1.5); 
+}
+.store__info h1 {
+    font-size: 4rem;
+    font-weight: var(--fw_semi);
+}
+.store__info h2 {
+    font-weight: var(--fw_reg);
 }

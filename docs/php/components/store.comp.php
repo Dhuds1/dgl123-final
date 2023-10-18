@@ -1,5 +1,5 @@
-<div class="store__wrapper">
 <div class="store__header-wrapper">
+   <?php require 'php/components/search.comp.php'; ?>
    <div class="store__banner-graphics">
       <div class="store__banner-image">
          <div class="store__socials">
@@ -34,7 +34,10 @@
          <div>
             <h1><?= $store_info['display_name']?><h1>
          </div>
+         <div>
+            <h2><?= $store_info['tagline']?></h2>
+         </div>
       </div>
       </div>
 </div>
-</div>
+<hr>
