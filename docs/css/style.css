@@ -111,6 +111,12 @@ h3 {
     margin: auto;
     margin-top: 20px;
 }
+.product__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 5rem;
+    margin-block: 5rem;
+}
 /* NAVIGATION BAR */
 .nav__bar-main {
     background: #222;
