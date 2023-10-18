@@ -1,4 +1,9 @@
 <form method="get" class="search__bar-wrapper"><input class="search__bar" name="search__bar" type="text" placeholder="Search"><button type="submit" for="search__bar" class="search__bar-button">Search</button>
+<?php
+    if($_SERVER['REQUEST_METHOD'] === ['GET']){
+        
+    }
+?>
 </form>
 <nav class="nav__bar-main">
     <h1>Hello, <?= $user_name ?>!</h1>
