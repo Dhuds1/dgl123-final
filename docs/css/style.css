@@ -385,3 +385,33 @@ h2.card__product-price {
 .store__info h2 {
     font-weight: var(--fw_reg);
 }
+/* Creation Forms */
+.creation__menu {
+    width: 100%;
+}
+.creation__menu input[type="text"],
+.creation__menu label,
+.creation__menu textarea {
+    width: 300px;
+    border-radius: 5px;;
+}
+.creation__menu input[type="text"],
+.creation__menu label {
+    padding: 0;
+}
+.creation__menu label {
+    display: inline-block;
+    line-height: 1;
+    margin: 15px 0 5px 0;
+}
+.creation__menu input[type="text"] {
+    height: 30px;
+}
+.creation__menu input[type="text"],
+.creation__menu textarea {
+    display: block;
+}
+.creation__menu textarea {
+    resize: none;
+    height: 100px;
+}

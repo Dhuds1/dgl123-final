@@ -23,7 +23,7 @@
                 <a href=<?= $store['name'].'/manage' ?>>Manage Store</a>
                 </li>
                 <li>
-                <a href='<?= $store['name'].'/products' ?>'>Manage Products</a>
+                <a href='createProduct'>Manage Products</a>
                 </li>
                 </div>
 
