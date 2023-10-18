@@ -5,7 +5,9 @@ $addto_user_cart = "send this information to user cart";
 // STORE VARS
 $store_info = [
     "rating" => 4.4,
-    "orders_total" => 99,
+    "reviews" => 9,
+    "orders_total" => 999,
+    "items_total" => 99,
     "name" => "store-name",
     "display_name" => "Store Name",
     "store_banner" => "#",

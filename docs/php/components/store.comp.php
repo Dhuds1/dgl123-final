@@ -1,3 +1,4 @@
+<div class="store__wrapper">
 <div class="store__header-wrapper">
    <div class="store__banner-graphics">
       <div class="store__banner-image">
@@ -14,6 +15,26 @@
       </div>
    </div>
    <div class="store__banner-text">
-      <h1><?= $store_info['name']?><h1>
-   </div>
+      <div class="store__info-buttons">
+
+         <div class="store__contact-buttons">
+            <button>Store Owner</button>
+            <div>
+               <button>Follow Store</button>
+               <button>Message</button>
+         </div>
+         </div>
+         <div class="store__stats">
+            <span><b>Sales</b><br><?= $store_info['orders_total'] ?></span>
+            <span><b>Items</b><br><?= $store_info['items_total'] ?></span>
+            <span><b>Reviews</b><br><?= $store_info['reviews'] ?></span>
+         </div>
+      </div>
+      <div class="store__info">
+         <div>
+            <h1><?= $store_info['display_name']?><h1>
+         </div>
+      </div>
+      </div>
+</div>
 </div>

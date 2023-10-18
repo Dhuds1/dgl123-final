@@ -1,4 +1,3 @@
-<div class="nav__wrapper">
 <form method="get" class="search__bar-wrapper"><input class="search__bar" name="search_bar" type="text" placeholder="Search"><button type="submit" for="search_bar" class="search__bar-button">Search</button>
 </form>
 <nav class="nav__bar-main">
@@ -55,4 +54,3 @@
         </div>
     </ul>
 </nav>
-</div>
