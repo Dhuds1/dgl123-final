@@ -7,7 +7,7 @@
     <ul>
         <div>
             <li>
-                <a href="/index">Home</a>
+                <a href="index">Home</a>
             </li>
             <?php if($user_logged): ?>
                 <li>
