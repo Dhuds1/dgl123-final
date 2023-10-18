@@ -7,11 +7,11 @@
         </div>
         <h2 class="card__product-title"><?= $product_info['name'] ?></h2>
         <h3 class="card__product-store">
-            <span class="card__store-ratings"><?= $store_rating ?> &starf;</span>
-            <span class="card__store-purchases"><?= $store_orders_total?> &SmallCircle;</span>
-            <?= $store_name ?>
+            <span class="card__store-ratings"><?= $store_info['rating'] ?> &starf;</span>
+            <span class="card__store-purchases"><?= $store_info['orders_total']?> &SmallCircle;</span>
+            <?= $store_info['display_name'] ?>
         </h3>
-        <h2 class="card__product-price">$<?= $product_price ?></h2>
+        <h2 class="card__product-price">$<?= $product_info['price'] ?></h2>
     </a>
-    <a href=<?= "$user_cart"?> data-product=<?= "$addto_user_cart"?>><button class="card__btn-cart">&plus; Add To Cart</button></a>
+    <a href=<?= $user_cart=null ?>><button class="card__btn-cart">&plus; Add To Cart</button></a>
 </div>

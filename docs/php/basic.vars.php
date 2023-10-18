@@ -12,6 +12,7 @@ $store_info = [
 
 // PRODUCT VARS, CHILD OF STORE
 $product_info = [
+    "store" => $store_info['name'],
     "name" => "product name",
     "post_page" => "product",
     "image_thumb" => "#",

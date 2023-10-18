@@ -11,27 +11,21 @@
             <li>
                 <a href="/">Home</a>
             </li>
-            <?php
-            if($user_logged){
-                echo
-                "
+            <?php if($user_logged): ?>
                 <li>
-                    <a href='$user_name'>Wishlist</a>
+                    <a href='<?= $user_name.'/wishlist' ?>'>Wishlist</a>
                 </li>
-                ";
-            }
-            ?>
+            <?php endif; ?>
             <?php if($user_logged && $user_store): ?>
-                echo "
                 <div>
                 <li>
-                <a href=<?=$store_info['info']?>>Store</a>
+                <a href=<?=$store_info['name']?>>Store</a>
                 </li>
                 <li>
-                <a href=''>Manage Store</a>
+                <a href='<?= $store_info['name'].'/manage' ?>'>Manage Store</a>
                 </li>
                 <li>
-                <a href='$store_name/products'>Manage Products</a>
+                <a href='<?= $store_info['name'].'/products' ?>'>Manage Products</a>
                 </li>
                 </div>
 
