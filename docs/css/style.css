@@ -139,27 +139,27 @@ h3 {
     color: white;
     border-right: 1px solid #ffffff10;
 }
-.nav__bar-main ul {
+.nav__bar-main ul.nav_content {
     width: 80%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     position: relative;
 }
-.nav__bar-main ul div {
+.nav__bar-main ul.nav_content div {
     display: flex;
     align-items: center;
     gap: 20px;
     text-transform: capitalize;
 }
-.nav__bar-main ul li {
+.nav__bar-main ul.nav_content li {
+    width: 60px;
+    height: 40px;
     list-style-type: none;
     color: white;
 }
 .nav__bar-main li:not(.logo, .account){
     border: 2px solid pink;
-    width: 40px;
-    height: 40px;
     border-radius: 50vw;
 }
 .nav__bar-main li.logo {
@@ -178,7 +178,7 @@ h3 {
 .nav__bar-main li.account:hover b{
     text-decoration: none;
 }
-.nav__bar-main ul li a {
+.nav__bar-main ul.nav_content li a {
     height: 100%;
     width: 100%;
     color: inherit;
@@ -187,12 +187,39 @@ h3 {
     justify-content: center;
     align-items: center;
 }
-.nav__bar-main ul li:hover a {
+.nav__bar-main ul.nav_content li:hover{
     cursor: pointer;
 }
-.nav__bar-main ul li:hover:not(.logo, .account) {
+.nav__bar-main ul.nav_content li:hover:not(.logo, .account) {
     background-color: #ffffff40;
     color: pink;
+}
+.nav__bar-main #accountDropDown {
+    position: relative;
+}
+#accountDropDown ul{
+    width: 250px;
+    position: absolute;
+    background-color: green;
+    top: calc(100% + 10px);
+    right: 0;
+}
+#accountDropDown li {
+    width: 100%;
+    display: block;
+    border: none;
+    border-radius: 0px;
+    padding-inline: 20px;
+}
+#accountDropDown li:not(.account){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#accountDropDown li.account a {
+    flex-direction: column;
+    align-items: start;
+    white-space: nowrap;
 }
 /* SEARCH BAR */
 .search__bar-wrapper {

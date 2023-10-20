@@ -1,5 +1,5 @@
 <nav class="nav__bar-main">
-    <ul>
+    <ul class="nav_content">
         <li class="logo">
             <a href="index"><span>🦄</span> <h2>Cracked Unicorn</h2></a>
         </li>
@@ -12,25 +12,33 @@
         <div>
             <?php if ($user_logged): ?>
                 <li>
-                    <a href=<?= "cart" ?>>🛒</a>
-                </li>
-                <li>
                     <a href=<?= "wishlist" ?>>❤️</a>
                 </li>
-                <li class="account">
-                    <a><h3>welcome, <b><?= $user_name ?></b></h3></a>
-                </li>
                 <li>
-                    <a href=<?= "/profile?$user_name" ?>>👤</a>
+                    <a href=<?= "updates" ?>>🔔&#9660;</a>
                 </li>
-                <li>
-                    <a href=<?= "/profile-settings?$user_name" ?>>⚙️</a>
-                </li>
+                    <li id="accountDropDown"><a>👤&#9660;</a>
+                        <ul class="dropDown">
+                            <li class="account">
+                                <a>
+                                <h2>Welcome, <?= $user_name ?></h2>
+                                <h3>Account</h3>
+                                </a>
+                            </li>
+                            <li>Hi</li>
+                            <li>Hi</li>
+                            <li>Hi</li>
+                            <li>Hi</li>
+                        </ul>
+                    </li>
             <?php else: ?>
-                <li>
-                    <a href='loginSignup'>Login or SignUp</a>
+                <li class="account">
+                    <a href='loginSignup'><h3>welcome, <b>Login</b></h3></a>
                 </li>
             <?php endif; ?>
+            <li>
+                <a href=<?= "cart" ?>>🛒</a>
+            </li>
         </div>
     </ul>
 </nav>
