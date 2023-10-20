@@ -1,52 +1,28 @@
 <nav class="nav__bar-main">
-    <h1>Welcome<?php
-        if($user_name){
-           echo ", $user_name";
-        }
-    ?>!</h1>
     <ul>
-        <div>
-            <li>
-                <a href="index">Home</a>
-            </li>
-            <?php if($user_logged): ?>
-                <li>
-                    <a href=<?= "wishlist" ?>>Wishlist</a>
-                </li>
-            <?php endif; ?>
-            <?php if($user_logged && $user_store): ?>
-                <div>
-                <li>
-                <a href="store">Store</a>
-                </li>
-                <li>
-                <a href=<?= $store['name'].'/manage' ?>>Manage Store</a>
-                </li>
-                <li>
-                <a href='createProduct'>Manage Products</a>
-                </li>
-                </div>
-
-            <?php elseif($user_logged && !$user_store): ?>
-                <div>
-                <li>
-                <a href='createStore'>Create Store</a>
-                </li>
-                </div>
-            <?php endif; ?>
+        <li class="logo">
+            <a href="index"><span>🦄</span> <h2>Cracked Unicorn</h2></a>
+        </li>
+        <form method="get" class="search__bar-wrapper">
+            <div class="search__bar">
+                <input class="search__bar-input" name="search_bar" type="text" placeholder="Search"><button
+                    type="submit" for="search_bar" class="search__bar-button">🔍</button>
             </div>
-            <div>
-            <?php if($user_logged): ?>
-            <li>
-            <a href=<?= "$user_name/profile" ?>>Profile</a>
-            </li>
-            <li>
-            <a href=<?= "$user_name/settings" ?>>Settings</a>
-            </li>
-            <?php else: ?>
-                echo "
+        </form>
+        <div>
+            <?php if ($user_logged): ?>
                 <li>
-                <a href='loginSignup'>Login or SignUp</a>
+                    <a href=<?= "wishlist" ?>>❤️</a>
+                </li>
+                <li>
+                    <a href=<?= "/profile?$user_name" ?>>👤</a>
+                </li>
+                <li>
+                    <a href=<?= "/profile-settings?$user_name" ?>>⚙️</a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href='loginSignup'>Login or SignUp</a>
                 </li>
             <?php endif; ?>
         </div>
