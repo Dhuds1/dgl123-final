@@ -148,13 +148,15 @@ h3 {
 }
 .nav__bar-main ul div {
     display: flex;
+    align-items: center;
     gap: 20px;
+    text-transform: capitalize;
 }
 .nav__bar-main ul li {
     list-style-type: none;
     color: white;
 }
-.nav__bar-main li:not(.logo){
+.nav__bar-main li:not(.logo, .account){
     border: 2px solid pink;
     width: 40px;
     height: 40px;
@@ -163,11 +165,18 @@ h3 {
 .nav__bar-main li.logo {
     padding-inline: 10px;
 }
+ /* For logo / icon */
+.nav__bar-main li span {
+    font-size: var(--fs_xl);
+}
 .nav__bar-main li.logo:hover h2 {
     text-decoration: underline;
 }
-.nav__bar-main li span {
-    font-size: var(--fs_xl);
+.nav__bar-main li.account b{
+    text-decoration: underline;
+}
+.nav__bar-main li.account:hover b{
+    text-decoration: none;
 }
 .nav__bar-main ul li a {
     height: 100%;
@@ -178,10 +187,12 @@ h3 {
     justify-content: center;
     align-items: center;
 }
-.nav__bar-main ul li:hover:not(.logo) {
+.nav__bar-main ul li:hover a {
+    cursor: pointer;
+}
+.nav__bar-main ul li:hover:not(.logo, .account) {
     background-color: #ffffff40;
     color: pink;
-    cursor: pointer;
 }
 /* SEARCH BAR */
 .search__bar-wrapper {

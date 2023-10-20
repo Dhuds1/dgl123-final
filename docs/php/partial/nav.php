@@ -12,7 +12,13 @@
         <div>
             <?php if ($user_logged): ?>
                 <li>
+                    <a href=<?= "cart" ?>>🛒</a>
+                </li>
+                <li>
                     <a href=<?= "wishlist" ?>>❤️</a>
+                </li>
+                <li class="account">
+                    <a><h3>welcome, <b><?= $user_name ?></b></h3></a>
                 </li>
                 <li>
                     <a href=<?= "/profile?$user_name" ?>>👤</a>
