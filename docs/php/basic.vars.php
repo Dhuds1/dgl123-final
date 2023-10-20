@@ -1,6 +1,6 @@
 <?php
 // USER VARS
-$user_name = "Evelynn";
+$user_name = "Username";
 $addto_user_cart = "send this information to user cart";
 // STORE VARS
 $store = [

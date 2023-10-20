@@ -1,7 +1,7 @@
 <nav class="nav__bar-main">
     <ul class="nav_content">
         <li class="logo">
-            <a href="index"><span>🦄</span> <h2>Cracked Unicorn</h2></a>
+            <a href="index"><span>🦄</span><h2>Cracked Unicorn</h2></a>
         </li>
         <form method="get" class="search__bar-wrapper">
             <div class="search__bar">
@@ -21,14 +21,21 @@
                         <ul class="dropDown">
                             <li class="account">
                                 <a>
+                                <div class="profile__picture-menu">
+                                    PFP
+                                </div>
                                 <h2>Welcome, <?= $user_name ?></h2>
-                                <h3>Account</h3>
+                                <p>Profile Settings</p>
                                 </a>
                             </li>
-                            <li>Hi</li>
-                            <li>Hi</li>
-                            <li>Hi</li>
-                            <li>Hi</li>
+                            <li>Profile</li>
+                            <?php if ($user_store): ?>
+                                <li>Store</li>
+                                <li>Products</li>
+                                <li>Orders</li>
+                            <?php else: ?>
+                                <li>Create Store</li>
+                            <?php endif; ?>
                         </ul>
                     </li>
             <?php else: ?>
