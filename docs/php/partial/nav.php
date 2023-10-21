@@ -20,26 +20,33 @@
                 <li>
                     <a href=<?= "updates" ?>>🔔&#9660;</a>
                 </li>
-                    <li id="accountDropDown"><a>👤&#9660;</a>
+                    <li id="accountDropDown" class="accountDropDown"><a>👤&#9660;</a>
                         <ul class="dropDown">
                             <li class="account">
                                 <a>
                                 <div class="profile__picture-menu grid__row--span-2 grid__align--center">
                                     PFP
                                 </div>
-                                <h3>Welcome, <?= $user_name ?></h3>
-                                <p>Profile Settings</p>
+                                <h3>Welcome, <b><?= $user_name ?></b></h3>
+                                <p>View Profile</p>
                                 </a>
                             </li>
-                            <li>Profile</li>
+                            <span class="dropdown__sub-section-both">
+                                <li>Order History</li>
+                            </span>
                             <?php if ($user_store): ?>
-                            <li>Store</li>
+                            <span class="dropdown__sub-section-bottom">
+
+                                <li><a href="store">Store</a></li>
                                 <li class="tab">Settings</li>
                                 <li class="tab">Products</li>
                                 <li class="tab">Orders</li>
+                            </span>
                             <?php else: ?>
                                 <li>Create Store</li>
                             <?php endif; ?>
+                            <li>Account Settings</li>
+                            <li>Sign Out</li>
                         </ul>
                     </li>
             <?php else: ?>

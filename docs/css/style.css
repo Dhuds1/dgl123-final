@@ -206,10 +206,10 @@ h3 {
     background-color: #ffffff40;
     color: pink;
 }
-.nav__bar-main #accountDropDown {
+.nav__bar-main .accountDropDown {
     position: relative;
 }
-#accountDropDown ul{
+.accountDropDown .dropDown {
     display: hidden;
     width: 250px;
     position: absolute;
@@ -225,6 +225,13 @@ h3 {
     border: none;
     border-radius: 0px;
     padding: 10px;
+    font-size: var(--fs_med);
+}
+#accountDropDown li a {
+    display: inline;
+}
+#accountDropDown p {
+    font-size: var(--fs_sml);
 }
 #accountDropDown li:not(.account){
     display: flex;
@@ -497,4 +504,12 @@ h2.card__product-price {
 }
 #accountDropDown li.tab{
     padding-left: 30px;
+}
+.dropdown__sub-section-both {
+    border-top: 2px solid grey;
+}
+.dropdown__sub-section-both,
+.dropdown__sub-section-bottom {
+    display: block;
+    border-bottom: 2px solid grey;
 }
