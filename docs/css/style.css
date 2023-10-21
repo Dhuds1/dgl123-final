@@ -128,6 +128,15 @@ h3 {
     row-gap: 5rem;
     margin-block: 5rem;
 }
+/* GENERAL UTILITY */
+.grid__row--span-2 {
+    grid-row: span 2;
+}
+.grid__align--center {
+    justify-content: center;
+    align-content: center;
+}
+
 /* NAVIGATION BAR */
 .nav__bar-main {
     background: #222;
@@ -154,7 +163,7 @@ h3 {
 }
 .nav__bar-main ul.nav_content li {
     width: 60px;
-    padding-block: 5px;
+    height: 100%;
     list-style-type: none;
     color: white;
 }
@@ -205,8 +214,10 @@ h3 {
     width: 250px;
     position: absolute;
     background-color: green;
-    top: calc(100% + 25px);
+    top: calc(100% + 5px);
     right: 0;
+    border-radius: 5px;
+    overflow: hidden;
 }
 #accountDropDown li {
     width: 100%;
@@ -221,10 +232,9 @@ h3 {
     align-items: center;
 }
 #accountDropDown li.account a {
-    padding-block: 20px;
-    flex-direction: column;
-    align-items: start;
-    white-space: nowrap;
+    display: grid;
+    grid-template-columns: 50px 4fr;
+    grid-row: 1fr 1fr;
 }
 /* SEARCH BAR */
 .search__bar-wrapper {
@@ -475,4 +485,16 @@ h2.card__product-price {
 .creation__menu textarea {
     resize: none;
     height: 100px;
+}
+
+/* PROFILE STYLES */
+.profile__picture-menu {
+    width: 40px;
+    aspect-ratio: 1;
+
+    background-color: black;
+    border-radius: 50%;
+}
+#accountDropDown li.tab{
+    padding-left: 30px;
 }

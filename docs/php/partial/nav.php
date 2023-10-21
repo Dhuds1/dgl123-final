@@ -10,6 +10,9 @@
             </div>
         </form>
         <div>
+            <li>
+                <a href=<?= "cart" ?>>🛒</a>
+            </li>
             <?php if ($user_logged): ?>
                 <li>
                     <a href=<?= "wishlist" ?>>❤️</a>
@@ -21,18 +24,19 @@
                         <ul class="dropDown">
                             <li class="account">
                                 <a>
-                                <div class="profile__picture-menu">
+                                <div class="profile__picture-menu grid__row--span-2 grid__align--center">
                                     PFP
                                 </div>
-                                <h2>Welcome, <?= $user_name ?></h2>
+                                <h3>Welcome, <?= $user_name ?></h3>
                                 <p>Profile Settings</p>
                                 </a>
                             </li>
                             <li>Profile</li>
                             <?php if ($user_store): ?>
-                                <li>Store</li>
-                                <li>Products</li>
-                                <li>Orders</li>
+                            <li>Store</li>
+                                <li class="tab">Settings</li>
+                                <li class="tab">Products</li>
+                                <li class="tab">Orders</li>
                             <?php else: ?>
                                 <li>Create Store</li>
                             <?php endif; ?>
@@ -43,9 +47,6 @@
                     <a href='loginSignup'><h3>welcome, <b>Login</b></h3></a>
                 </li>
             <?php endif; ?>
-            <li>
-                <a href=<?= "cart" ?>>🛒</a>
-            </li>
         </div>
     </ul>
 </nav>
