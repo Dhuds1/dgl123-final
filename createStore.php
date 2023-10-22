@@ -1,4 +1,4 @@
-<?php require "php/loader.php"; ?>
+<?php require "loader.php"; ?>
 <div class="wrapper">
    <form method="post" class="creation__menu">
       <h2>Create a new Store</h2>

@@ -2,5 +2,5 @@
 // CALL BEFORE REQUIRES !IMPORTANT
 $page = "Wishlist";
 
-require "php/loader.php";
+require "loader.php";
 get_dependencies('wishlist', 'view');

@@ -1,5 +1,4 @@
 <div class="store__header-wrapper">
-   <?php require 'php/components/search.comp.php'; ?>
    <div class="store__banner-graphics">
       <div class="store__banner-image">
          <div class="store__socials">
