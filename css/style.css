@@ -243,7 +243,7 @@ h3 {
     flex-direction: row;
     align-items: center;
 }
-#accountDropDown li.account a {
+#accountDropDown a li.account {
     display: grid;
     grid-template-columns: 50px 4fr;
     grid-row: 1fr 1fr;
