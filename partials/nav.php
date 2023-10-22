@@ -22,37 +22,41 @@
                 </li>
                     <li id="accountDropDown" class="accountDropDown"><a>👤&#9660;</a>
                         <ul class="dropDown">
+                            <a>
                             <li class="account">
-                                <a>
                                 <div class="profile__picture-menu grid__row--span-2 grid__align--center">
                                     PFP
                                 </div>
                                 <h3>Welcome, <b><?= $user_name ?></b></h3>
                                 <p>View Profile</p>
-                                </a>
                             </li>
+                            </a>
                             <span class="dropdown__sub-section-both">
-                                <li>Order History</li>
+                                <a href="">
+                                    <li>Order History</li>
+                                </a>
                             </span>
                             <?php if ($user_store): ?>
                             <span class="dropdown__sub-section-bottom">
 
-                                <li><a href="store">Store</a></li>
-                                <li class="tab">Settings</li>
-                                <li class="tab">Products</li>
-                                <li class="tab">Orders</li>
+                                <a href="store"><li>Store</li></a>
+                                <a href=""><li class="tab">Settings</li></a>
+                                <a href=""><li class="tab">Products</li></a>
+                                <a href=""><li class="tab">Orders</li></a>
                             </span>
                             <?php else: ?>
                                 <li>Create Store</li>
                             <?php endif; ?>
-                            <li>Account Settings</li>
-                            <li>Sign Out</li>
+                            <a href=""><li>Account Settings</li></a>
+                            <a href=""><li>Sign Out</li></a>
                         </ul>
                     </li>
             <?php else: ?>
+                <a href='loginSignup'>
                 <li class="account">
-                    <a href='loginSignup'><h3>welcome, <b>Login</b></h3></a>
+                    <h3>welcome, <b>Login</b></h3>
                 </li>
+                </a>
             <?php endif; ?>
         </div>
     </ul>

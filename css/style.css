@@ -122,6 +122,11 @@ h3 {
     margin: auto;
     margin-top: 20px;
 }
+.page__content-wrapper {
+    padding-block: 10rem;
+    width: 80%;
+    margin: auto;
+}
 .product__wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

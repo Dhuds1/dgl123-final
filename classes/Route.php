@@ -40,7 +40,6 @@ class Route {
         // Load the view file for the requested route
         $view_file = "views/$route.view.php";
         if (file_exists($view_file)) {
-            echo "$view_file";
             include $view_file;
         }
         else {
