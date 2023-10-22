@@ -1,14 +1,12 @@
-<?php
+<?php 
 class Route {
     public static $valid_routes = array();
-
     public static $page_title;
 
     public static function set($route, $function) {
         self::$valid_routes[] = $route;
 
         if ($route === self::current_page()) {
-            $function();
         } else {
             // Check if the file exists for the requested page and handle 404 errors if necessary.
             if (!self::page_exists($route)) {
@@ -25,15 +23,32 @@ class Route {
         if (empty($page_name)) {
             $page_name = 'index';
         }
+
         return $page_name;
     }
 
     public static function page_exists($route) {
+        // Check if the view file for the requested route exists
         $current_page = self::current_page();
-        // Check if the page file exists
-        return file_exists($current_page . '.php');
+    
+        return file_exists($current_page.'.php');
     }
-
+    
+    public static function load_view() {
+        // Define the directory where your view files are stored
+        $route = self::current_page();
+        // Load the view file for the requested route
+        $view_file = "views/$route.view.php";
+        if (file_exists($view_file)) {
+            echo "$view_file";
+            include $view_file;
+        }
+        else {
+            exit;
+        }
+    }
+    
+    
     public static function redirect_to_404() {
         // Set the 404 page title
         self::$page_title = "404 Not Found";

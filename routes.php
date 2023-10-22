@@ -56,3 +56,4 @@ Route::set('orders', function(){
     Route::$page_title = "$user_name's Orders";
 });
 // END OF USER PAGES
+Route::load_view();
