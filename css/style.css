@@ -120,7 +120,7 @@ h3 {
     max-width: 1000px;
     width: 80%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 120px;
 }
 .page__content-wrapper {
     padding-block: 10rem;
@@ -141,61 +141,64 @@ h3 {
     justify-content: center;
     align-content: center;
 }
-
-/* NAVIGATION BAR */
-.nav__bar-main {
+/* NAVIGATION BAR *//* NAVIGATION BAR *//* NAVIGATION BAR */
+.nav-bar-main {
     background: #222;
     width: 100%;
-    padding-block: 1em;
+    padding: 1em 0;
     position: fixed;
     top: 0;
     z-index: 999;
     color: white;
     border-right: 1px solid #ffffff10;
 }
-.nav__bar-main ul.nav_content {
+.nav-bar-main > * {
+    list-style-type: none;
+}
+.nav-bar__content {
     width: 80%;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     position: relative;
 }
-.nav__bar-main ul.nav_content div {
+
+.nav-bar__content div {
     display: flex;
     align-items: center;
     gap: 20px;
     text-transform: capitalize;
 }
-.nav__bar-main ul.nav_content li {
+
+.nav-bar__item {
     width: 60px;
     height: 100%;
-    list-style-type: none;
     color: white;
-}
-.nav__bar-main li:not(.logo, .account){
     border: 2px solid pink;
     border-radius: 50vw;
 }
-.nav__bar-main li.logo {
+
+.nav-bar__logo {
     padding-inline: 10px;
 }
- /* For logo / icon */
-.nav__bar-main li span {
+
+.nav-bar__logo span {
     font-size: var(--fs_xl);
 }
-.nav__bar-main li.logo {
-    white-space: nowrap;
-}
-.nav__bar-main li.logo:hover h2 {
+
+.nav-bar__logo:hover h2 {
     text-decoration: underline;
 }
-.nav__bar-main li.account b{
+
+.nav-bar__item .account b {
     text-decoration: underline;
 }
-.nav__bar-main li.account:hover b{
+
+.nav-bar__item.account:hover b {
     text-decoration: none;
 }
-.nav__bar-main ul.nav_content li a {
+
+.nav-bar__item a {
     height: 100%;
     width: 100%;
     color: inherit;
@@ -203,19 +206,15 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.nav__bar-main ul.nav_content li:hover{
     cursor: pointer;
 }
-.nav__bar-main ul.nav_content li:hover:not(.logo) {
-    background-color: #ffffff40;
-    color: pink;
-}
-.nav__bar-main .accountDropDown {
+
+.nav-bar__item.accountDropDown {
     position: relative;
 }
-.accountDropDown .dropDown {
-    display: hidden;
+
+.nav-bar__dropdown {
+    display: none;
     width: 250px;
     position: absolute;
     background-color: green;
@@ -224,7 +223,8 @@ h3 {
     border-radius: 5px;
     overflow: hidden;
 }
-#accountDropDown li {
+
+.nav-bar__dropdown li {
     width: 100%;
     display: block;
     border: none;
@@ -232,39 +232,65 @@ h3 {
     padding: 10px;
     font-size: var(--fs_med);
 }
-#accountDropDown li a {
+
+.nav-bar__dropdown li a {
     display: inline;
 }
-#accountDropDown p {
+
+.nav-bar__dropdown p {
     font-size: var(--fs_sml);
 }
-#accountDropDown li:not(.account){
+
+.nav-bar__dropdown li:not(.account) {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-#accountDropDown a li.account {
+
+.nav-bar__dropdown a .account {
     display: grid;
     grid-template-columns: 50px 4fr;
     grid-row: 1fr 1fr;
 }
+/* PROFILE STYLES */
+.nav-bar-main .nav-bar__item .profile__picture-menu {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1;
+    background-color: black;
+    border-radius: 50%;
+}
+/* PROFILE STYLES */
+.nav-bar__dropdown-item.tab {
+    padding-left: 30px;
+}
+
+.nav-bar__dropdown-item.dropdown__sub-section-both {
+    border-top: 2px solid grey;
+}
+
+.nav-bar__dropdown-item.dropdown__sub-section-both,
+.nav-bar__dropdown-item.dropdown__sub-section-bottom {
+    display: block;
+    border-bottom: 2px solid grey;
+}
 /* SEARCH BAR */
-.search__bar-wrapper {
+.search-bar__wrapper {
     height: 40px;
     display: flex;
     justify-content: center;
 }
-.search__bar {
+.search-bar {
     background-color: white;
     width: 400px;
     display: flex;
     border-radius: 50vw;
     padding-inline: 20px;
 }
-.search__bar-input {
+.search-bar__input {
     width: 100%;
 }
-.search__bar-button {
+.search-bar__button {
     height: 100%;
     aspect-ratio: 1;
     cursor: pointer;
@@ -273,8 +299,8 @@ h3 {
 .search__bar-input:focus {
     outline: red;
 }
-.search__bar-button,
-.search__bar-input {
+.search-bar__button,
+.search-bar__input {
     background-color: transparent;
     border: none;
 }
@@ -495,22 +521,3 @@ h2.card__product-price {
     height: 100px;
 }
 
-/* PROFILE STYLES */
-.profile__picture-menu {
-    width: 40px;
-    aspect-ratio: 1;
-
-    background-color: black;
-    border-radius: 50%;
-}
-#accountDropDown li.tab{
-    padding-left: 30px;
-}
-.dropdown__sub-section-both {
-    border-top: 2px solid grey;
-}
-.dropdown__sub-section-both,
-.dropdown__sub-section-bottom {
-    display: block;
-    border-bottom: 2px solid grey;
-}

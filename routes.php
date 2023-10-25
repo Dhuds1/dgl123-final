@@ -1,4 +1,5 @@
 <?php
+
 // MAIN PAGES
 Route::set('index', function(){
     Route::$page_title = "Cracked Unicorn | Home";
@@ -7,10 +8,13 @@ Route::set('about', function() {
     Route::$page_title = "CrackedUnicorn | About Us";
 });
 Route::set('contact', function(){
-    $page_title = "CrackedUnicorn | Contact Us";
+    Route::$page_title = "CrackedUnicorn | Contact Us";
 });
 Route::set('policy', function(){
     Route::$page_title = "CrackedUnicorn | Privacy Policy";
+});
+Route::set('login', function(){
+    Route::$page_title = "CrackedUnicorn | Login";
 });
 // END OF MAIN PAGES
 
@@ -19,8 +23,7 @@ Route::set('create-store', function(){
     Route::$page_title = "Create Store";
 });
 Route::set('store', function(){
-    Route::$page_title = $store["display_name"];
-    echo "store";
+    Route::$page_title = "test";
 });
 Route::set('products', function(){
     Route::$page_title = "products";

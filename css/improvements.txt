@@ -46,3 +46,14 @@ RESULT
     align-items: center;
     position: absolute;
 }
+
+PROMPT INTENT trying to get GPT to reformat navbar and css to have less specificity requirements and use B.E.M.
+RESULTS broke my CSS, that's fine I wanted to restructure it anyways. It was too specific before.
+
+ASKING GPT FOR IMPORVEMTNS ON MY ROUTES CLASS AND CONTROLLER
+SUGGESTION remove .view. from the file
+
+
+-- CLASS GOALS --
+Login signup form
+    - refactor navigation bar if time

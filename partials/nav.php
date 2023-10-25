@@ -1,61 +1,59 @@
-<nav class="nav__bar-main">
-    <ul class="nav_content">
-        <li class="logo">
+<nav class="nav-bar-main">
+    <ul class="nav-bar__content">
+        <li class="nav-bar__logo">
             <a href="index"><span>🦄</span><h2>Cracked Unicorn</h2></a>
         </li>
-        <form method="get" class="search__bar-wrapper">
-            <div class="search__bar">
-                <input class="search__bar-input" name="search_bar" type="text" placeholder="Search"><button
-                    type="submit" for="search_bar" class="search__bar-button">🔍</button>
+        <form method="get" class="search-bar__wrapper">
+            <div class="search-bar">
+                <input class="search-bar__input" name="search-bar" type="text" placeholder="Search">
+                <button type="submit" for="search-bar" class="search-bar__button">🔍</button>
             </div>
         </form>
-        <div>
-            <li>
-                <a href=<?= "cart" ?>>🛒</a>
+        <div class="nav-bar__actions">
+            <li class="nav-bar__item">
+                <a href="cart">🛒</a>
             </li>
             <?php if ($user_logged): ?>
-                <li>
-                    <a href=<?= "wishlist" ?>>❤️</a>
+                <li class="nav-bar__item">
+                    <a href="wishlist">❤️</a>
                 </li>
-                <li>
-                    <a href=<?= "updates" ?>>🔔&#9660;</a>
+                <li class="nav-bar__item">
+                    <a href="updates">🔔&#9660;</a>
                 </li>
-                    <li id="accountDropDown" class="accountDropDown"><a>👤&#9660;</a>
-                        <ul class="dropDown">
-                            <a>
-                            <li class="account">
+                <li id="accountDropDown" class="nav-bar__item accountDropDown">
+                    <a>👤&#9660;</a>
+                    <ul class="nav-bar__dropdown">
+                        <a>
+                            <li class="dropdown__item account">
                                 <div class="profile__picture-menu grid__row--span-2 grid__align--center">
                                     PFP
                                 </div>
                                 <h3>Welcome, <b><?= $user_name ?></b></h3>
                                 <p>View Profile</p>
                             </li>
+                        </a>
+                            <a href="">
+                                <li class="dropdown__item dropdown__devider-both">Order History</li>
                             </a>
-                            <span class="dropdown__sub-section-both">
-                                <a href="">
-                                    <li>Order History</li>
-                                </a>
-                            </span>
-                            <?php if ($user_store): ?>
-                            <span class="dropdown__sub-section-bottom">
-
+                        <?php if ($user_store): ?>
+                            <span class="dropdown__list">
                                 <a href="store"><li>Store</li></a>
-                                <a href=""><li class="tab">Settings</li></a>
-                                <a href=""><li class="tab">Products</li></a>
-                                <a href=""><li class="tab">Orders</li></a>
+                                <a href=""><li class="dropdown__list-item">Settings</li></a>
+                                <a href=""><li class="dropdown__list-item">Products</li></a>
+                                <a href=""><li class="dropdown__list-item">Orders</li></a>
                             </span>
-                            <?php else: ?>
-                                <li>Create Store</li>
-                            <?php endif; ?>
-                            <a href=""><li>Account Settings</li></a>
-                            <a href=""><li>Sign Out</li></a>
-                        </ul>
-                    </li>
+                        <?php else: ?>
+                            <li>Create Store</li>
+                        <?php endif; ?>
+                        <a href=""><li class="dropdown__item">Account Settings</li></a>
+                        <a href=""><li class="dropdown__item">Sign Out</li></a>
+                    </ul>
+                </li>
             <?php else: ?>
                 <a href='loginSignup'>
-                <li class="account">
-                    <h3>welcome, <b>Login</b></h3>
-                </li>
+                    <li class="nav-bar__item account">
+                        <h3>Welcome, <b>Login</b></h3>
+                    </li>
                 </a>
             <?php endif; ?>
         </div>

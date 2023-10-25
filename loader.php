@@ -3,8 +3,8 @@
     TEMPORARY REQUIREMENTS
 */
 require 'basic.vars.php';
-// END OF TEMP REQUIREMENTS
 require 'autoloader.php';
-
-require 'partials/head.php';
+require 'routes.php';
+// END OF TEMP REQUIREMENTS
+include "partials/head.php";
 require 'partials/nav.php';
