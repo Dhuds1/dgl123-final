@@ -44,8 +44,6 @@ class Route {
         if (file_exists($view_file)) {
             // Include the head.php file at the beginning
             include $view_file;
-        } else {
-            exit;
         }
     }
 

@@ -1,5 +1,5 @@
 <?php
-
+require 'basic.vars.php';
 // MAIN PAGES
 Route::set('index', function(){
     Route::$page_title = "Cracked Unicorn | Home";
@@ -23,7 +23,7 @@ Route::set('create-store', function(){
     Route::$page_title = "Create Store";
 });
 Route::set('store', function(){
-    Route::$page_title = "test";
+    Route::$page_title = $store['name']." | Storefront";
 });
 Route::set('products', function(){
     Route::$page_title = "products";
