@@ -436,14 +436,10 @@ h2.card__product-price {
     flex-direction: column;
     text-align: center;
 }
-.store__info {
-    margin-top: var(--pd_15);
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
+
 /* TO FIX */
 .store__info {
+    margin-top: var(--pd_15);
     width: 100%;
     display: flex;
     flex-direction: column;
