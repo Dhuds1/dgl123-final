@@ -1,5 +1,11 @@
 <?php
+function dd($var) {
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
+    die();
+}
 require 'loader.php';
 // All pages get redirected to index, only call here.
-// REQUIRE AFTER LOADER
-require 'routes.php';
+
+echo Route::$page_title."working";
