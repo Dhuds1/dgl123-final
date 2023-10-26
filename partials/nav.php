@@ -4,10 +4,8 @@
             <a href="index"><span>🦄</span><h2>Cracked Unicorn</h2></a>
         </li>
         <form method="get" class="search-bar__wrapper">
-            <div class="search-bar">
-                <input class="search-bar__input" name="search-bar" type="text" placeholder="Search">
+                <input class="search-bar__input" name="search-bar" type="text" placeholder="Search" autocomplete="off">
                 <button type="submit" for="search-bar" class="search-bar__button">🔍</button>
-            </div>
         </form>
         <div class="nav-bar__actions">
             <li class="nav-bar__item">
@@ -15,14 +13,14 @@
             </li>
             <?php if ($user_logged): ?>
                 <li class="nav-bar__item">
-                    <a href="wishlist">❤️</a>
+                    <a href="wishlist?<?= $SESSION['user']?>">❤️</a>
                 </li>
                 <li class="nav-bar__item">
                     <a href="updates">🔔&#9660;</a>
                 </li>
                 <li id="accountDropDown" class="nav-bar__item accountDropDown">
                     <a>👤&#9660;</a>
-                    <ul class="nav-bar__dropdown">
+                    <ul id="dropDownList" class="nav-bar__dropdown">
                         <a>
                             <li class="dropdown__item account">
                                 <div class="profile__picture-menu grid__row--span-2 grid__align--center">

@@ -1,10 +1,4 @@
 <?php
-function dd($var) {
-    echo '<pre>';
-    var_dump($var);
-    echo '</pre>';
-    die();
-}
 require 'loader.php';
 // All pages get redirected to index, only call here.
 

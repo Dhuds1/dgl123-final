@@ -165,6 +165,7 @@ h3 {
 
 .nav-bar__content div {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 20px;
     text-transform: capitalize;
@@ -181,12 +182,24 @@ h3 {
 .nav-bar__logo {
     padding-inline: 10px;
 }
-
+.nav-bar__logo a {
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+}
 .nav-bar__logo span {
     font-size: var(--fs_xl);
 }
 
+.nav-bar__logo h2{
+    text-decoration: underline;
+}
 .nav-bar__logo:hover h2 {
+    color: pink;
     text-decoration: underline;
 }
 
@@ -212,7 +225,6 @@ h3 {
 .nav-bar__item.accountDropDown {
     position: relative;
 }
-
 .nav-bar__dropdown {
     display: none;
     width: 250px;
@@ -223,7 +235,9 @@ h3 {
     border-radius: 5px;
     overflow: hidden;
 }
-
+.show {
+    display: block;
+}
 .nav-bar__dropdown li {
     width: 100%;
     display: block;
@@ -276,28 +290,30 @@ h3 {
 }
 /* SEARCH BAR */
 .search-bar__wrapper {
+    background-color: white;
     height: 40px;
+    position: relative;
     display: flex;
     justify-content: center;
-}
-.search-bar {
-    background-color: white;
-    width: 400px;
-    display: flex;
     border-radius: 50vw;
-    padding-inline: 20px;
 }
 .search-bar__input {
     width: 100%;
+    padding: 0px 20px;
+}
+.search-bar__input:focus {
+    width: 100%;
+    outline: none;
+    border: 2px solid red;
+    border-radius: 50vw;
 }
 .search-bar__button {
     height: 100%;
+    position: absolute;
+    right: 20px;
     aspect-ratio: 1;
     cursor: pointer;
     margin-right: -20px
-}
-.search__bar-input:focus {
-    outline: red;
 }
 .search-bar__button,
 .search-bar__input {
