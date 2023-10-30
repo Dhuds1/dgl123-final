@@ -1,5 +1,4 @@
 <?php
-require "connections.php";
 /*
     dummy structure of what I think I want
 */
@@ -11,21 +10,20 @@ $prep_statement = [
     // USERS
     // USER SIGNUP
     "signup"=> [
-        "check_email_user" => "SELECT user_name FROM cracked_users WHERE user_name = ? OR user_email = ?;",
-        
-        "insert" => "INSERT INTO cracked_users (user_name, user_email, user_password, user_salt, user_firstName, user_lastName, user_DOB, user_gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"],
+        "check_email_user" => "SELECT users_name FROM cracked_users WHERE users_name = ? OR users_email = ? VALUES (?, ?)",
+        "insert" => "INSERT INTO cracked_users (users_name, users_email, users_password, users_salt, users_firstName, users_lastName, users_DOB, users_gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"],
     // USER LOGIN
     "login" => [
-        "retrieve" => "SELECT user_password, user_salt FROM cracked_users WHERE user_name = ? OR user_email = ?"
+        "retrieve" => "SELECT users_password, users_salt FROM cracked_users WHERE users_name = ? OR users_email = ?"
     ],
     // USER WISHLIST
     "wishlist" => [
-        "retrieve" => "SELECT * FROM cracked_wishlist WHERE user_id = ? OR is_public = 1;",
+        "retrieve" => "SELECT * FROM cracked_wishlist WHERE users_id = ? OR is_public = 1;",
     ],
     // USER CART
     "cart"=> [
-        "retrieve" => "SELECT * FROM cracked_cart WHERE user_id = ?;",
-        "add" => "INSERT INTO cracked_cart (user_id, user_name, store_name, product_name, product_style, product_quantity) VALUES (?, ?, ?, ?, ?, ?);"
+        "retrieve" => "SELECT * FROM cracked_cart WHERE users_id = ?;",
+        "add" => "INSERT INTO cracked_cart (users_id, users_name, store_name, product_name, product_style, product_quantity) VALUES (?, ?, ?, ?, ?, ?);"
     ],
 ];
 // STORE
