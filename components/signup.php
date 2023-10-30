@@ -1,4 +1,4 @@
-<form action="process_signup.php" method="post">
+<form action="controller/process_signup.php" method="post">
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" required><br><br>
 
