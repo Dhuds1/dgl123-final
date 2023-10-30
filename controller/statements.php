@@ -10,8 +10,8 @@ $prep_statement = [
     // USERS
     // USER SIGNUP
     "signup"=> [
-        "check_username" => "SELECT * FROM cracked_users WHERE user_name = ?;",
-        "check_email"=> "SELECT * FROM cracked_users WHERE user_email = ?",
+        "check_username" => "SELECT user_name FROM cracked_users WHERE user_name = ?;",
+        "check_email"=> "SELECT user_email FROM cracked_users WHERE user_email = ?",
         "insert" => "INSERT INTO cracked_users (user_name, user_email, user_password, user_salt, user_firstName, user_lastName, user_DOB, user_gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"],
     // USER LOGIN
     "login" => [
