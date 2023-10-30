@@ -20,7 +20,6 @@ class DB {
     public function query($sql) {
         return $this->con->query($sql);
     }
-
     public function close() {
         $this->con->close();
     }
