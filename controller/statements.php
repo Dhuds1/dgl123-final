@@ -1,7 +1,15 @@
 <?php
-/*
-    dummy structure of what I think I want
-*/
+// CONNECTIONS
+$accessor = [
+    "users_login"=> [
+        "host"=> "localhost",
+        "user"=> "accessor",
+        "pass"=> "passwordUwU:3",//friend came up with this impenetrable password
+        "db" => "cracked",
+    ]
+];
+
+// STATEMENTS
 
 // user WISHLIST
 // user PROFILE

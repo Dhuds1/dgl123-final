@@ -1,4 +1,4 @@
-<form action="controller/process_signup.php" method="post">
+<form action="controller/process_signup.php" onsubmit="handle()" method="post">
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" required><br><br>
 
@@ -22,3 +22,8 @@
 
     <input type="submit" value="Sign Up">
 </form>
+<script>
+    fucntion handle() {
+        prevent.default();
+    }
+</script>

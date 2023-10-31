@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-require "statements.php";
 require "classes/DB.php";
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -26,11 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 
 function authenticate_user($username, $password, $prep_statement) {
-    $login_retrieve_query = $prep_statement['login']['retrieve'];
-
     // Wrap the database query in an anonymous function
-    $get_user_data = function () use ($username, $login_retrieve_query) {
-        require_once 'connections.php';
+    $get_user_data = function () use ($username) {
+        require_once 'statements.php';
+        $login_retrieve_query = $prep_statement['login']['retrieve'];
         $acc = $accessor['users_login']; // Adjust the accessor key
         $login = new DB($acc['host'], $acc['user'], $acc['password'], $acc['db']);
         $result = $login->query($login_retrieve_query);
