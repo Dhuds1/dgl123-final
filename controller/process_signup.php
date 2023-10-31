@@ -20,21 +20,24 @@ if(isset($_POST['first_name']) &&
    echo "here";
 }
 function matching($value, $c_value, $input){
+   require_once "statements.php";
    if($value === $c_value) return $value;
    else {
-     
-      header("location: ../index");
       exit();
    }
 }
 function user_in_db($value) {
-   require_once "connections.php";
-   require_once "statements.php";
 }
 function generate_salt() {
    $salt = 1;
    return $salt;
 }
 function hashed_password($password, $salt) {
-
+   return 1;
+}
+function submit_user_data($first_name, $last_name, $user_name, $email, $hashed_password, $salt) {
+   require_once "statements.php";
+   $acc = $accessor["users_login"];
+   $db = new DB($acc['host'], $acc['user'], $acc['pass'], $acc['db']);
+   $db->close();
 }
