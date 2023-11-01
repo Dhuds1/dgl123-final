@@ -1,5 +1,5 @@
 <?php 
     require "loader.php";
     echo '<div class="store__wrapper">';
-    require 'components/store.comp.php';
+    require 'posts/store.php';
     echo '</div>';

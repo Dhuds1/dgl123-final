@@ -6,8 +6,8 @@ $config = [
         "port"=> "3306",
         "db" => "cracked",
         "charset"=> "utf8mb4"
-    ]
-    "accessor" =[
+    ],
+    "accessor" => [
         "user" => 'accessor',
         "pass" => "passwordUwU:3"//friend came up with this impenetrable password
     ]
@@ -22,7 +22,7 @@ $prep_statement = [
     // USERS
     // USER SIGNUP
     "signup"=> [
-        "check_email_user" => "SELECT users_name FROM cracked_users WHERE users_name = ? OR users_email = ? VALUES (?, ?)",
+        "check_email_user" => "SELECT users_name FROM cracked_users WHERE users_name = ? OR users_email = ?",
         "insert" => "INSERT INTO cracked_users (users_name, users_email, users_password, users_salt, users_firstName, users_lastName, users_DOB, users_gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"],
     // USER LOGIN
     "login" => [

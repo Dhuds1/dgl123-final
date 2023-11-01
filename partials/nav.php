@@ -35,7 +35,7 @@
                             </a>
                         <?php if ($user_store): ?>
                             <span class="dropdown__list">
-                                <a href="store"><li>Store</li></a>
+                                <a href="store-name"><li>Store</li></a>
                                 <a href=""><li class="dropdown__list-item">Settings</li></a>
                                 <a href=""><li class="dropdown__list-item">Products</li></a>
                                 <a href=""><li class="dropdown__list-item">Orders</li></a>

@@ -4,12 +4,12 @@ class DB {
     public $statement;
 
     public function __construct($config, $user, $pass) {
-        $this->host = $host;
+        $this->config = $config;
         $this->user = $user;
         $this->pass = $pass;
         $dsn = 'mysql:'.http_build_query($config, '', ';');
 
-        $this->conn = new PDO($dsn, $user, $pass [
+        $this->conn = new PDO($dsn, $user, $pass, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     }
@@ -19,6 +19,7 @@ class DB {
         $statement->execute($params);
         return $this;
     }
+
     public function find(){
         return $this->statement->fetch();
     }
@@ -28,5 +29,11 @@ class DB {
     public function close() {
         $this->con->close();
     }
-    public 
+    function authorize($condition, $status = Response::FORBIDDEN){
+        if (!$condition){
+           echo "<p><a href='index.php'>Back</a></p>";
+           echo "You don't have permission to view this ".$status;
+           die();
+        }
+     }
 }

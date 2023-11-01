@@ -21,6 +21,7 @@ $store = [
 $product = [
     [  
         "store_name" => $store['display_name'],
+        'store_uri'=> $store['name'],
         "store_rating" => $store['rating'],
         "store_reviews" => $store['reviews'],
         "store_total_orders" => $store["orders_total"],
@@ -32,6 +33,7 @@ $product = [
     ],
     [  
         "store_name" => $store['display_name'],
+        'store_uri'=> $store['name'],
         "store_rating" => $store['rating'],
         "store_reviews" => $store['reviews'],
         "store_total_orders" => $store["orders_total"],
@@ -43,6 +45,7 @@ $product = [
     ],
     [  
         "store_name" => $store['display_name'],
+        'store_uri'=> $store['name'],
         "store_rating" => $store['rating'],
         "store_reviews" => $store['reviews'],
         "store_total_orders" => $store["orders_total"],
@@ -54,6 +57,7 @@ $product = [
     ],
     [  
         "store_name" => $store['display_name'],
+        'store_uri'=> $store['name'],
         "store_rating" => $store['rating'],
         "store_reviews" => $store['reviews'],
         "store_total_orders" => $store["orders_total"],
@@ -65,6 +69,7 @@ $product = [
     ],
     [  
         "store_name" => $store['display_name'],
+        'store_uri'=> $store['name'],
         "store_rating" => $store['rating'],
         "store_reviews" => $store['reviews'],
         "store_total_orders" => $store["orders_total"],

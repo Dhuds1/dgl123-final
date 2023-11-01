@@ -38,9 +38,10 @@
          </div>
       </div>
    </div>
-   <?php require "filters.comp.php" ?>
+   <?php require "components/filters.php"?>
+   <br>
    <hr>
 </div>
 <div class="wrapper">
-   <?php require "product.loader.php" ?>
+   <?php require "components/product.loader.php" ?>
 </div>
