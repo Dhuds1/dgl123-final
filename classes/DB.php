@@ -1,27 +1,32 @@
 <?php 
 class DB {
-    private $host;
-    private $user;
-    private $pass;
-    private $db;
-    private $con;
+    public $con;
+    public $statement;
 
-    public function __construct($host, $user, $pass, $db) {
+    public function __construct($config, $user, $pass) {
         $this->host = $host;
         $this->user = $user;
         $this->pass = $pass;
-        $this->db = $db;
-        $this->con = new mysqli($this->host, $this->user, $this->pass, $this->db);
-        if ($this->con->connect_error) {
-            die("Connection failed: " . $this->con->connect_error);
-        }
+        $dsn = 'mysql:'.http_build_query($config, '', ';');
+
+        $this->conn = new PDO($dsn, $user, $pass [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]);
     }
 
-    public function query($sql) {
-        return $this->con->query($sql);
+    public function query($sql, $params) {
+        $statement = $this->con->query->prepare($sql, $params);
+        $statement->execute($params);
+        return $this;
+    }
+    public function find(){
+        return $this->statement->fetch();
+    }
+    public function findAll() {
+        return $this->statement->fetchAll();
     }
     public function close() {
         $this->con->close();
     }
+    public 
 }
-

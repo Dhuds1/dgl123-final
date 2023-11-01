@@ -28,9 +28,9 @@ function authenticate_user($username, $password, $prep_statement) {
     $get_user_data = function () use ($username) {
         require_once 'statements.php';
         $login_retrieve_query = $prep_statement['login']['retrieve'];
-        $acc = $accessor['users_login']; // Adjust the accessor key
-        $login = new DB($acc['host'], $acc['user'], $acc['password'], $acc['db']);
-        $result = $login->query($login_retrieve_query);
+        
+        $login = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+        $result = $login->query($login_retrieve_query, $username);
         $user_data = $result->fetch_assoc();
         return $user_data;
     };

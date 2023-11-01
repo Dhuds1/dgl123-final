@@ -1,11 +1,15 @@
 <?php
 // CONNECTIONS
-$accessor = [
-    "users_login"=> [
+$config = [
+    "database"=> [
         "host"=> "localhost",
-        "user"=> "accessor",
-        "pass"=> "passwordUwU:3",//friend came up with this impenetrable password
+        "port"=> "3306",
         "db" => "cracked",
+        "charset"=> "utf8mb4"
+    ]
+    "accessor" =[
+        "user" => 'accessor',
+        "pass" => "passwordUwU:3"//friend came up with this impenetrable password
     ]
 ];
 
