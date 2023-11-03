@@ -39,6 +39,9 @@ $prep_statement = [
     ],
     "store" => [
         "retrieve" => "SELECT * FROM cracked_store",
+    ],
+    "product" => [
+        "retrieve"=> "SELECT * FROM cracked_product",
     ]
 ];
 // STORE

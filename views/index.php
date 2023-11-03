@@ -1,6 +1,5 @@
-<?php require "basic.vars.php" ?>
 <header class="header__home">
-    <h1>Test</h1>
+    <h1>Cracked Unicorn<br><span>A place to sell</span></h1>
 </header>
 <div class="page__content-wrapper">
     <h2 class="store__card--title">Top Stores</h2>

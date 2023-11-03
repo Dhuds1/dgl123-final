@@ -2,7 +2,7 @@
 /*
     TEMPORARY REQUIREMENTS
 */
-require 'basic.vars.php';
+require 'controller/statements.php';
 require 'debug.php';
 
 require 'autoloader.php';

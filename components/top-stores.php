@@ -3,7 +3,7 @@
 require "controller/statements.php";
 //QUERY DB FOR STORES    
 $stores = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
-$stores->query("SELECT * FROM cracked_store");
+$stores->query($prep_statement['store']['retrieve']);
 $results = $stores->findAll();
 ?>
 <?php foreach ($results as $store => $data): ?>

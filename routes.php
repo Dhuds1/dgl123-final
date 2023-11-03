@@ -1,5 +1,4 @@
 <?php
-require 'basic.vars.php';
 // MAIN PAGES
 Route::set('index', function(){
     Route::$page_title = "Cracked Unicorn | Home";
