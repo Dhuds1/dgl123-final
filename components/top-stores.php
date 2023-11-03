@@ -33,11 +33,11 @@ $results =  $stores->findAll();
          </h3>
       </div>
       <h4 class="store__card--info">
-         <span class="card__store-ratings">Rating
+         <span class="card__store-ratings"><b>Rating</b>
             <!-- GET STORE RATING -->
             <?= $data['rating'] ?>/5 &starf;
          </span>
-         <span class="card__store-purchases">Orders
+         <span class="card__store-purchases"><b>Orders</b>
             <!-- GET STORE TOTAL ORDERS -->
             <?= $data['orders'] ?>
          </span>

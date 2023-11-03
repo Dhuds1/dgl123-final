@@ -445,7 +445,20 @@ h2.card__product-price {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: relative;
+    position: absolute;
+    background-color: #22222280;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+    color: white;
+    text-transform: uppercase;
+}
+.store__card:hover .store__card--info,
+.store__card:hover .store__name{
+    text-decoration: underline;
+}
+.store__card:hover .store__card--info {
+    background-color: #00000080;
 }
 .store__card--banner,
 .store__card--color-fill {
@@ -476,6 +489,7 @@ h2.card__product-price {
 }
 .store__name {
     font-size: 2rem;
+    font-weight: 600;
     text-transform: uppercase;
 }
 /* STORE */
