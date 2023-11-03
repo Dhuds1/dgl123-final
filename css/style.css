@@ -163,7 +163,7 @@ h3 {
     background: #222;
     width: 100%;
     padding: 1em 0;
-    position: fixed;
+    position: relative;
     top: 0;
     z-index: 999;
     color: white;
@@ -423,6 +423,8 @@ h2.card__product-price {
     gap: 10px;
 }
 .store__card--wrapper a{
+    width: 100%;
+    height: 100%;
     color: inherit;
     text-decoration: none;
 }
@@ -509,6 +511,11 @@ h2.card__product-price {
     height: 600px;
     position: relative;
 }
+.store__banner-graphics img,
+.store__banner-graphic-fill {
+    width: 100%;
+    height: 100%;
+}
 .store__banner-text {
     height: 200px;
     position: relative;
@@ -525,8 +532,7 @@ h2.card__product-price {
     height: 200px;
     aspect-ratio: 1;
     border-radius: 50vw;
-    background-color: pink;
-
+    
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -534,6 +540,13 @@ h2.card__product-price {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+.store__front-image img,
+.store__front-image-fill {
+    width: 100%;
+    height: 100%;
+
 }
 /* socials */
 .store__socials {
