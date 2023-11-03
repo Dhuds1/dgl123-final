@@ -123,15 +123,32 @@ h3 {
     margin-top: 120px;
 }
 .page__content-wrapper {
-    padding-block: 10rem;
+    padding-block: 5rem;
     width: 80%;
     margin: auto;
 }
 .product__wrapper {
+    width: 100%;
+    margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 5rem;
-    margin-block: 5rem;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    row-gap: 2rem;
+}
+@media screen and (max-width:1400px){
+    .product__wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 1000px) {
+    .product__wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 600px) {
+    .page__content-wrapper {
+        width: 100%;
+    }
 }
 /* GENERAL UTILITY */
 .grid__row--span-2 {
@@ -383,6 +400,56 @@ h2.card__product-price {
     border-radius: 50vw;
     border: var(--brd_thin-grey);
     cursor: pointer;
+}
+/*----------------------------------
+
+        Homepage Styles
+
+----------------------------------*/
+.header__home {
+    width: 100%;
+    height: 500px;
+    display: block;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+}
+.store__card--wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.store__card--wrapper a{
+    color: inherit;
+    text-decoration: none;
+}
+.store__card--title {
+    margin-block: 20px;
+}
+.store__card {
+    height: 250px;
+    background-color: pink;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.store-card__info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+.store__name {
+    font-size: 2rem;
+    text-transform: uppercase;
 }
 /* STORE */
 .store__wrapper {
