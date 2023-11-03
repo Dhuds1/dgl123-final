@@ -37,6 +37,9 @@ $prep_statement = [
         "retrieve" => "SELECT * FROM cracked_cart WHERE users_id = ?;",
         "add" => "INSERT INTO cracked_cart (users_id, users_name, store_name, product_name, product_style, product_quantity) VALUES (?, ?, ?, ?, ?, ?);"
     ],
+    "store" => [
+        "retrieve" => "SELECT * FROM cracked_store",
+    ]
 ];
 // STORE
 // store CREATE

@@ -431,7 +431,6 @@ h2.card__product-price {
 }
 .store__card {
     height: 250px;
-    background-color: pink;
     padding: 20px;
     border-radius: 10px;
     position: relative;
@@ -439,13 +438,41 @@ h2.card__product-price {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    overflow: hidden;
 }
-.store-card__info {
+.store__card--info {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+}
+.store__card--banner,
+.store__card--color-fill {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: -1;
+}
+.store__card--heading {
+    display: flex;
+    align-items: center;
+}
+.store__card--logo {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.store__card--logo img,
+.store__card--logo .store__card--logo--fill {
+    width: 100%;
+    height: 100%;
 }
 .store__name {
     font-size: 2rem;
