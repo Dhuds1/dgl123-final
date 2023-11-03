@@ -560,12 +560,14 @@ h2.card__product-price {
     justify-content: center;
     gap: 20px;
 }
-.store__socials ul li {
+.store__socials ul li{
     list-style-type: none;
     text-decoration: none;
 
     font-size: var(--fs_med);
     font-weight: var(--fw_semi);
+}
+.store__socials ul li a {
     color: white;
 }
 .store__info-buttons {

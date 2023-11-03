@@ -2,15 +2,21 @@
    <div class="store__banner-graphics">
       <div class="store__banner-image">
       <?php if($store['banner']) :?>
-      <img src="data:image/jpeg;base64,<?= base64_encode($store['banner']) ?>" alt="">
+      <img style="background-color:#<?= $store['primary_color'] ?>" src="data:image/jpeg;base64,<?= base64_encode($store['banner']) ?>" alt="">
       <?php else:?>
       <div class="store__banner-graphic-fill" style="background-color:#<?= $store['primary_color'] ?>"></div>
       <?php endif;?>
          <div class="store__socials">
             <ul>
-               <li>Reddit</li>
-               <li>Twitter</li>
-               <li>Instagram</li>
+               <?php if($store['social_1']) :?>
+               <li><a href="<?= $store['social_1_link']?>"><?= $store['social_1']?></a></li>
+               <?php endif;?>
+               <?php if($store['social_2']) :?>
+               <li><a href="<?= $store['social_2_link']?>"><?= $store['social_2']?></a></li>
+               <?php endif;?>
+               <?php if($store['social_3']) :?>
+               <li><a href="<?= $store['social_3_link']?>"><?= $store['social_3']?></a></li>
+               <?php endif;?>
             </ul>
          </div>
          <div class="store__front-image">
@@ -26,7 +32,7 @@
       <div class="store__info-buttons">
 
          <div class="store__contact-buttons">
-            <button>Store Owner</button>
+               <button>Store Owner</button>
             <div>
                <button>Follow Store</button>
                <button>Message</button>
