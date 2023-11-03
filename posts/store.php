@@ -32,7 +32,7 @@
       <div class="store__info-buttons">
 
          <div class="store__contact-buttons">
-               <button>Store Owner</button>
+               <button style="background-color: #<?= $store['highlight_color']?>" class="store__buttons-owner"><?= $owner['username']?></button>
             <div>
                <button>Follow Store</button>
                <button>Message</button>

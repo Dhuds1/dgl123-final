@@ -493,6 +493,7 @@ h2.card__product-price {
     font-size: 2rem;
     font-weight: 600;
     text-transform: uppercase;
+    text-shadow: 0 0 4px white;
 }
 /* STORE */
 .store__wrapper {
@@ -515,6 +516,8 @@ h2.card__product-price {
 .store__banner-graphic-fill {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 .store__banner-text {
     height: 200px;
@@ -546,7 +549,6 @@ h2.card__product-price {
 .store__front-image-fill {
     width: 100%;
     height: 100%;
-
 }
 /* socials */
 .store__socials {
@@ -583,11 +585,34 @@ h2.card__product-price {
     justify-content: space-around;
 }
 .store__contact-buttons button {
-    padding: 10px 5px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid black;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 .store__contact-buttons div {
     display: flex;
     gap: 10px;
+}
+.store__buttons-owner {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.7rem;
+}
+.store__contact-buttons button::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: transparent;
+    top: 0;
+    left: 0;
+}
+.store__contact-buttons button:hover::after{
+    background-color: rgba(0,0,0,.2);
 }
 .store__stats {
     width: 40%;
