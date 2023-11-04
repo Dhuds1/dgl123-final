@@ -1,3 +1,5 @@
+<?php $user_logged = false?>
+<div class="nav__spacer">a</div>
 <nav class="nav-bar-main">
     <ul class="nav-bar__content">
         <li class="nav-bar__logo">
@@ -49,7 +51,7 @@
                 </li>
             <?php else: ?>
                 <a href='loginSignup'>
-                    <li class="nav-bar__item account">
+                    <li class="nav-bar__item account no-border">
                         <h3>Welcome, <b>Login</b></h3>
                     </li>
                 </a>
