@@ -1,4 +1,9 @@
 <?php
+   function get_name(){
+      if(isset($_GET["name"])){
+         return $_GET["name"];
+      }
+   }
    function get_store($slug){
       require 'controller/statements.php';
       $storeQuery = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
@@ -41,11 +46,12 @@ try {
          <span class="card__product-wishlist"><i class="fa fa-lg fa-heart" aria-hidden="true"></i></span>
          <a href="#">
             <div class="card__product-image">
-               <img src="<?= $product['image'] ?>">
+               <img src="data:image/jpeg;base64,<?= base64_encode($product['image']) ?>">
             </div>
             <h2 class="card__product-title">
                <?= $product['name'] ?>
             </h2>
+            <?php if($store['slug'] !== get_name()): ?>
             <h3 class="card__product-store">
                <span class="card__store-ratings">
                   <?= $store['rating'] ?> &starf;
@@ -55,6 +61,7 @@ try {
                </span>
                <?= $store['name'] ?>
             </h3>
+            <?php endif ?>
             <h2 class="card__product-price">$
                <?= $product['price'] ?>
             </h2>
