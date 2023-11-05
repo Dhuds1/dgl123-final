@@ -44,7 +44,7 @@ try {
       <?php $store = get_store_data($product['store_id']) ?>
       <div class="card__product">
          <span class="card__product-wishlist"><i class="fa fa-lg fa-heart" aria-hidden="true"></i></span>
-         <a href="#">
+         <a href="product?name=<?= $product['slug'] ?>">
             <div class="card__product-image">
                <img src="data:image/jpeg;base64,<?= base64_encode($product['image']) ?>">
             </div>

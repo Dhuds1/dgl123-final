@@ -1,6 +1,10 @@
-<?php
-require 'php/partial/head.php';
-require 'php/basic.vars.php';
-echo "<h2>$user_name</h2>";
+<?php 
+    require "loader.php";
+    require "controller/statements.php";
+    $name = $_GET["name"];
+    $query_product = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 
-require 'php/components/product.comp.php';
+// Query to retrieve store data based on the slug
+$query_product->query("SELECT * FROM cracked_product WHERE slug = :slug", ["slug" => $name]);
+$product = $query_product->find();
+require "posts/product.php";

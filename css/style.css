@@ -722,4 +722,16 @@ h2.card__product-price {
     resize: none;
     height: 100px;
 }
+.product__image {
+    width: 400px;
+    height: 400px;
 
+    overflow: hidden;
+}
+.product__image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
