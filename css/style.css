@@ -739,3 +739,7 @@ h2.card__product-price {
     object-fit: cover;
     object-position: center;
 }
+.solo-product__wrapper {
+    display: flex;
+    gap: 50px;
+}
