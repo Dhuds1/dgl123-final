@@ -53,9 +53,6 @@
          </div>
       </div>
    </div>
-   <?php require "components/filters.php"?>
-   <br>
-   <hr>
 </div>
 <div class="wrapper">
    <?php require "components/product.loader.php" ?>

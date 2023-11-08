@@ -6,7 +6,10 @@
     </div>
 </header>
 <div class="page__content-wrapper">
-    <h2 class="store__card--title">Top Stores</h2>
+    <div class="title__wrapper">
+        <h2 class="store__card--title">Top Stores</h2>
+        <h2 class="store__card--title"><a href="all-stores">View All Stores</a></h2>
+    </div>
     <section class="store__card--wrapper">
         <?php require "components/top-stores.php" ?>
     </section>

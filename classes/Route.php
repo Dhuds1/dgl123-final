@@ -48,7 +48,14 @@ class Route {
             include $view_file;
         }
     }
-
+    public function get_name($name) {
+        if($name){
+            return $name;
+        }
+        else {
+            self::redirect_to_404();
+        }   
+    }
     public static function redirect_to_404() {
         // Set the 404 page title
         self::$page_title = "404 Not Found";
@@ -59,4 +66,5 @@ class Route {
         // Exit to prevent further processing
         exit;
     }
+    
 }
