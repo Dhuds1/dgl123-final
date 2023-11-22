@@ -7,3 +7,5 @@ My final project
 
 ## SIMPLIFICATION PROCESS
 - as of right now I have overly complicated logic, and no real direction that I am going. I am going to redirect my focus to work on something different entirely. For MILESTONE 3, my goal is to create a database that stores products that are related to a store front. ON the store front page, if you click on a product it will open up that product post. THAT IS ALL.
+
+# DOCUMENTATION
