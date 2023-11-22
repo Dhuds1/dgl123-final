@@ -4,7 +4,7 @@ require "loader.php";
 require "controller/statements.php";
 //QUERY DB FOR STORES    
 $stores = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
-// RETURNS THE 4 STORES WITH THE MOST ITEMS
+// RETURNS ALL THE STORES QUERIED
 $stores->query($prep_statement['store']['retrieve']." ORDER BY items DESC");
 $results = $stores->findAll();
 ?>

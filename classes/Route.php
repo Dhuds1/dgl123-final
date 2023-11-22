@@ -1,7 +1,8 @@
 <?php
 class Route {
     public static $valid_routes = array();
-    public static $page_title;
+    // This page title feature is depricated, as when loading out of the test enviorment caused the stylesheets to not load correclty on the index page. This is mainly due to the fact that there was no varibale being set at the beginning on page load, and no way of setting it asyncronously.
+    // public static $page_title;
 
     public static function set($route, $function) {
         self::$valid_routes[] = $route;
