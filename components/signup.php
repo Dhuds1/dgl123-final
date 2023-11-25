@@ -1,13 +1,8 @@
 <?php
-// CODE WRITTEN BY CHAT GPT
-// Start the session
-require "../autoloader.php";
-session_start();
-
 // Check for error session variable
 if (isset($_SESSION['error'])) {
     $error_message = $_SESSION['error'];
-    echo "<p style='color: red;'>Error: $error_message</p>";
+    echo "<p style='color: red;'>Errors!<br> $error_message</p>";
 
     // Clear the error session variable
     unset($_SESSION['error']);
@@ -35,10 +30,16 @@ $old_values = isset($_SESSION['old_values']) ? $_SESSION['old_values'] : [];
     <input type="email" id="email_confirm" name="email_confirm" value="<?= isset($old_values['email_confirm']) ? $old_values['email_confirm'] : '' ?>" required><br><br>
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
+    <input type="password" id="password" name="password" value="<?= isset($old_values['password']) ? $old_values['password'] : '' ?>" required><br><br>
 
     <label for="password_confirm">Confirm Password:</label>
-    <input type="password" id="password_confirm" name="password_confirm" required><br><br>
+    <input type="password" id="password_confirm" name="password_confirm" value="<?= isset($old_values['password_confirm']) ? $old_values['password_confirm'] : '' ?>" required><br><br>
 
     <input type="submit" value="Sign Up">
 </form>
+<script>
+// Clear old_values session variable if the page is refreshed or exited
+window.addEventListener('beforeunload', function() {
+    <?php unset($_SESSION['old_values']); ?>
+});
+</script>

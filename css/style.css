@@ -98,6 +98,9 @@ body {
     font-family: var(--fa_default);
     font-weight: var(--fw_reg);
     font-size: var(--fs_reg);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    visibility: visible;
 }
 h1 {
     text-transform:capitalize;

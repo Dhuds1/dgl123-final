@@ -1,4 +1,6 @@
-<?php $user_logged = false?>
+<?php
+session_start();
+?>
 <div class="nav__spacer">a</div>
 <nav class="nav-bar-main">
     <ul class="nav-bar__content">
@@ -13,9 +15,9 @@
             <li class="nav-bar__item">
                 <a href="cart">🛒</a>
             </li>
-            <?php if ($user_logged): ?>
+            <?php if (isset($_SESSION['username'])): ?>
                 <li class="nav-bar__item">
-                    <a href="wishlist?<?= $SESSION['user']?>">❤️</a>
+                    <a href="wishlist?<?= $SESSION['username']?>">❤️</a>
                 </li>
                 <li class="nav-bar__item">
                     <a href="updates">🔔&#9660;</a>
@@ -28,25 +30,25 @@
                                 <div class="profile__picture-menu grid__row--span-2 grid__align--center">
                                     PFP
                                 </div>
-                                <h3>Welcome, <b><?= $user_name ?></b></h3>
+                                <h3>Welcome, <b><?= $_SESSION['username'] ?></b></h3>
                                 <p>View Profile</p>
                             </li>
                         </a>
                             <a href="">
                                 <li class="dropdown__item dropdown__devider-both">Order History</li>
                             </a>
-                        <?php if ($user_store): ?>
+                        <?php if (isset($_SESSION['store'])): ?>
                             <span class="dropdown__list">
-                                <a href="store-name"><li>Store</li></a>
-                                <a href=""><li class="dropdown__list-item">Settings</li></a>
-                                <a href=""><li class="dropdown__list-item">Products</li></a>
-                                <a href=""><li class="dropdown__list-item">Orders</li></a>
+                                <a href="store?name=<?= $_SESSION['store'] ?>"><li>Store</li></a>
+                                <a href="settings?name=<?= $_SESSION['store'] ?>"><li class="dropdown__list-item">Manage Store</li></a>
+                                <a href="products?name=<?= $_SESSION['store'] ?>"><li class="dropdown__list-item">Manage Products</li></a>
+                                <a href="#"><li class="dropdown__list-item">Orders</li></a>
                             </span>
                         <?php else: ?>
                             <li>Create Store</li>
                         <?php endif; ?>
                         <a href=""><li class="dropdown__item">Account Settings</li></a>
-                        <a href=""><li class="dropdown__item">Sign Out</li></a>
+                        <a href="logout"><li class="dropdown__item">Sign Out</li></a>
                     </ul>
                 </li>
             <?php else: ?>

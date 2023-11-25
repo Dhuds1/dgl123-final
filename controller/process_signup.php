@@ -1,6 +1,10 @@
 <?php
-// Start the session
 session_start();
+
+// CODE GENERATED WITH CHAT GPT'S HELP, CAUSE IM LAZY AND IDC LMAOO
+// Start the session
+require "../autoloader.php";
+require "statements.php";
 
 // Validate form data
 $first_name = $_POST['first_name'];
@@ -21,39 +25,73 @@ $_SESSION['old_values'] = [
     // Add more fields as needed
 ];
 
+$errors = []; // Initialize an array to store errors
+
 // Add more validation as needed
 if (empty($first_name) || empty($last_name) || empty($username) || empty($email) || empty($email_confirm) || empty($password) || empty($password_confirm)) {
-    $_SESSION['error'] = "All fields are required. Please fill out the entire form.";
-    header("Location: ../login?error=true");
-    exit();
+    $errors[] = "All fields are required. Please fill out the entire form.";
 }
 
 if ($email !== $email_confirm) {
-    $_SESSION['error'] = "Email and Confirm Email do not match.";
-    header("Location: ../login?error=true");
-    exit();
+    $errors[] = "Email's do not match.";
 }
 
 if ($password !== $password_confirm) {
-    $_SESSION['error'] = "Password and Confirm Password do not match.";
+    $errors[] = "Password's do not match.";
+}
+
+// Assuming $config is defined somewhere in your code
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+
+if ($usersDB->check_value('email', $email)) {
+    $errors[] = "$email is already taken, please try another email.";
+}
+
+if ($usersDB->check_value('username', $username)) {
+    $errors[] = "$username is already taken, please try another username.";
+}
+
+// Check if there are any errors
+if (!empty($errors)) {
+    // If there are errors, store them in the session and redirect
+    $_SESSION['error'] = implode("<br>", $errors);
     header("Location: ../login?error=true");
     exit();
 }
 
-// You can add more validation logic here
+// Proceed with user creation
+create_user($_POST, $usersDB);
 
-// If all validation passes, you can process the signup (for example, save to a database)
-// Replace the following with your actual signup logic
-
-// For demonstration purposes, let's just print the form data
-echo "First Name: $first_name<br>";
-echo "Last Name: $last_name<br>";
-echo "Username: $username<br>";
-echo "Email: $email<br>";
-echo "Password: $password<br>";
-
-// You should replace the above with your actual signup logic (e.g., save to a database)
-
-// Clear the old values session variable
+// Redirect and unset session variables
+header("Location: ../login");
 unset($_SESSION['old_values']);
+
+function create_user($postData, $usersDB) {
+
+    $first_name = $postData['first_name'];
+    $last_name = $postData['last_name'];
+    $username = $postData['username'];
+    $email = $postData['email'];
+
+    $password = password_hash($postData['password'], PASSWORD_BCRYPT); // Hash the password for security
+
+    // Prepare the SQL statement for inserting data
+    $sql = "INSERT INTO cracked_user (name, username, email, password) VALUES (:name, :username, :email, :password)";
+    $parameters = [
+        ":name"=> $first_name." ".$last_name,
+        ':username' => $username,
+        ':email' => $email,
+        ':password' => $password,
+    ];
+
+    // Execute the SQL statement
+    $usersDB->query($sql, $parameters);
+
+    // You can check for success or handle errors as needed
+    if ($usersDB->rowCount() > 0) {
+        echo "User registered successfully!";
+    } else {
+        echo "Error registering user.";
+    }
+}
 ?>

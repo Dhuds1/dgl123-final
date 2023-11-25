@@ -2,11 +2,11 @@
 const dropdown = document.getElementById("accountDropDown");
 const dropdownList = document.getElementById("dropDownList");
 
-document.addEventListener('click', (e)=>{
+document.addEventListener('click', (e) => {
    // if the element accountDropDown is clicked
-   if(e.target.parentNode.id === "accountDropDown"){
+   if (e.target.parentNode.id === "accountDropDown") {
       // if drop down is already open
-      if(dropdownList.classList.contains("show")){
+      if (dropdownList.classList.contains("show")) {
          dropDown("close");
          return;
       }
@@ -14,14 +14,14 @@ document.addEventListener('click', (e)=>{
       return;
    }
    // if outside of the menu was clicked
-   if(!dropdownList.classList.contains("show")){
+   if (!dropdownList.classList.contains("show")) {
       return;
    }
    dropDown("close");
 });
 
-function dropDown(e){
-   switch (e){
+function dropDown(e) {
+   switch (e) {
       case "open":
          dropdownList.classList.add("show");
          break;

@@ -31,6 +31,9 @@ class DB {
     public function findAll() {
         return $this->statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function rowCount() {
+        return $this->statement->rowCount();
+    }
     public function close() {
         $this->conn = null;
     }
@@ -40,5 +43,55 @@ class DB {
            echo "You don't have permission to view this ".$status;
            die();
         }
-     }
+    }
+    public function get_store($id) {
+        $sql = "SELECT * FROM cracked_store WHERE user_id = :id";
+        $param = [":id" => $id];
+        $results = $this->queryAll($sql, $param);
+    
+        if (count($results) > 0) {
+            return $results[0]['slug']; // Access the first row and the 'store_slug' column
+        } else {
+            return false;
+        }
+    }
+    
+    public function check_login($username_or_email, $password) {
+        // Prepare the SQL statement to check user credentials
+        $sql = "SELECT * FROM cracked_user WHERE username = :username_or_email OR email = :email";
+        $parameters = [':username_or_email' => $username_or_email, ':email' => $username_or_email];
+
+        // Execute the SQL statement
+        $this->query($sql, $parameters);
+
+        // Fetch the user data
+        $user = $this->find();
+
+        // Check if the password is correct
+        if ($user && password_verify($password, $user['password'])) {
+            return $user; // Return user data on successful login
+        }
+
+        return false; // Return false if login fails
+    }
+    public function check_value($field, $value) {
+        // Make sure $field is either 'email' or 'username' to avoid SQL injection
+        $allowedFields = ['email', 'username'];
+        if (!in_array($field, $allowedFields)) {
+            return false; // Invalid field
+        }
+    
+        // Prepare the SQL statement to check if the value exists
+        $sql = "SELECT COUNT(*) FROM cracked_user WHERE $field = :value";
+        $parameters = [':value' => $value];
+    
+        // Execute the SQL statement
+        $this->query($sql, $parameters);
+    
+        // Fetch the result
+        $count = $this->statement->fetchColumn();
+    
+        // If count is greater than 0, the value already exists
+        return $count > 0;
+    }
 }
