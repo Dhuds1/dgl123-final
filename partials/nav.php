@@ -40,7 +40,7 @@ session_start();
                         <?php if ($_SESSION['store']): ?>
                             <span class="dropdown__list">
                                 <a href="store?name=<?= $_SESSION['store'] ?>"><li>Store</li></a>
-                                <a href="settings?name=<?= $_SESSION['store'] ?>"><li class="dropdown__list-item">Manage Store</li></a>
+                                <a href="manage-store"><li class="dropdown__list-item">Manage Store</li></a>
                                 <a href="products?name=<?= $_SESSION['store'] ?>"><li class="dropdown__list-item">Manage Products</li></a>
                                 <a href="#"><li class="dropdown__list-item">Orders</li></a>
                             </span>

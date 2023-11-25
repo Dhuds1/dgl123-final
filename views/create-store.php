@@ -1,5 +1,13 @@
 <?php
-echo $_SESSION['error'];
+if (!$_SESSION['username']){
+    header('Location: index');
+    exit();
+}
+if($_SESSION['store']) {
+    header('Location: index');
+    exit();
+}
+echo isset($_SESSION['error'])? $_SESSION['error']: '';
 if (isset($_SESSION['success']['clean'])) {
     echo "Availale! <br>";
     echo "Name: ".$_SESSION['success']['clean'] . '<br>';
@@ -20,7 +28,8 @@ if (isset($_SESSION['success']['slug'])) {
 <?php if(isset($_SESSION['success'])): ?>
     <form action="controller/create-store.php" method="post">
         <!-- Hidden input field to submit store_name to the new form -->
-        <input type="hidden" name="store_name" value="<?= $_SESSION['store_name'] ?>">
+        <input type="hidden" name="store_name" value="<?= $_SESSION['success']['clean'] ?>">
+        <input type="hidden" name="slug" value="<?= $_SESSION['success']['slug'] ?>">
         <button type="reset" onclick="clearSession()">Clear</button>
         <br>
         <button type="submit">Set name</button>

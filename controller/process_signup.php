@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+   header("Location: ../login");
+   exit();
+}
 // CODE GENERATED WITH CHAT GPT'S HELP, CAUSE IM LAZY AND IDC LMAOO
 // Start the session
 require "../autoloader.php";
