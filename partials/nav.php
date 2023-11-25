@@ -50,7 +50,7 @@
                     </ul>
                 </li>
             <?php else: ?>
-                <a href='loginSignup'>
+                <a href='login'>
                     <li class="nav-bar__item account no-border">
                         <h3>Welcome, <b>Login</b></h3>
                     </li>

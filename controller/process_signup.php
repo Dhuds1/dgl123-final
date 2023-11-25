@@ -1,43 +1,59 @@
 <?php
-require "../autoloader.php";
-if(isset($_POST['first_name']) &&
-   isset($_POST['last_name']) &&
-   isset($_POST["username"]) && 
-   isset($_POST["email"]) &&
-   isset($_POST["email_confirm"]) &&
-   isset($_POST['password']) &&
-   isset($_POST['password_confirm'])){
-   $first_name = $_POST['first_name'];
-   $last_name = $_POST['last_name'];
-   $username = $_POST["username"];
-   $email = matching($_POST['email'], $_POST['email_confirm'], "Email");
-   $password = matching($_POST['password'], $_POST['password_confirm'], "password");
-   if ($email !== user_in_db($email) && $username !== user_in_db($password)){
-      $salt = generate_salt();
-      $hashed_password = hash_user_password($password, $salt);
-      submit_user_data($first_name, $last_name, $username, $email, $hashed_password, $salt);
-   };
-   echo "here";
+// Start the session
+session_start();
+
+// Validate form data
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$username = $_POST['username'];
+$email = $_POST['email'];
+$email_confirm = $_POST['email_confirm'];
+$password = $_POST['password'];
+$password_confirm = $_POST['password_confirm'];
+
+// Store form data in session variables
+$_SESSION['old_values'] = [
+    'first_name' => $first_name,
+    'last_name' => $last_name,
+    'username' => $username,
+    'email' => $email,
+    'email_confirm' => $email_confirm,
+    // Add more fields as needed
+];
+
+// Add more validation as needed
+if (empty($first_name) || empty($last_name) || empty($username) || empty($email) || empty($email_confirm) || empty($password) || empty($password_confirm)) {
+    $_SESSION['error'] = "All fields are required. Please fill out the entire form.";
+    header("Location: ../login?error=true");
+    exit();
 }
-function matching($value, $c_value, $input){
-   require_once "statements.php";
-   if($value === $c_value) return $value;
-   else {
-      exit();
-   }
+
+if ($email !== $email_confirm) {
+    $_SESSION['error'] = "Email and Confirm Email do not match.";
+    header("Location: ../login?error=true");
+    exit();
 }
-function user_in_db($value) {
+
+if ($password !== $password_confirm) {
+    $_SESSION['error'] = "Password and Confirm Password do not match.";
+    header("Location: ../login?error=true");
+    exit();
 }
-function generate_salt() {
-   $salt = 1;
-   return $salt;
-}
-function hashed_password($password, $salt) {
-   return 1;
-}
-function submit_user_data($first_name, $last_name, $user_name, $email, $hashed_password, $salt) {
-   require_once "statements.php";
-   $acc = $accessor["users_login"];
-   $db = new DB($acc['host'], $acc['user'], $acc['pass'], $acc['db']);
-   $db->close();
-}
+
+// You can add more validation logic here
+
+// If all validation passes, you can process the signup (for example, save to a database)
+// Replace the following with your actual signup logic
+
+// For demonstration purposes, let's just print the form data
+echo "First Name: $first_name<br>";
+echo "Last Name: $last_name<br>";
+echo "Username: $username<br>";
+echo "Email: $email<br>";
+echo "Password: $password<br>";
+
+// You should replace the above with your actual signup logic (e.g., save to a database)
+
+// Clear the old values session variable
+unset($_SESSION['old_values']);
+?>

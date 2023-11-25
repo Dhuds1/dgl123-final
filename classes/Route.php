@@ -59,7 +59,6 @@ class Route {
     }
     public static function redirect_to_404() {
         // Set the 404 page title
-        self::$page_title = "404 Not Found";
 
         // Include your custom 404 error page (error.html)
         include "error.php";
