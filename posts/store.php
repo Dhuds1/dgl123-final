@@ -39,6 +39,9 @@
          <div class="store__contact-buttons">
                <button style="background-color: #<?= $store['highlight_color']?>" class="store__buttons-owner"><?= $owner['username']?></button>
             <div>
+               <?php if($store['slug'] === $_SESSION['store']):?>
+                  <a href="manage-store">Manage Store</a>
+               <?php endif?>
                <button>Follow Store</button>
                <button>Message</button>
          </div>
