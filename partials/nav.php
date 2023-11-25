@@ -37,7 +37,7 @@ session_start();
                             <a href="">
                                 <li class="dropdown__item dropdown__devider-both">Order History</li>
                             </a>
-                        <?php if (isset($_SESSION['store'])): ?>
+                        <?php if ($_SESSION['store']): ?>
                             <span class="dropdown__list">
                                 <a href="store?name=<?= $_SESSION['store'] ?>"><li>Store</li></a>
                                 <a href="settings?name=<?= $_SESSION['store'] ?>"><li class="dropdown__list-item">Manage Store</li></a>
@@ -45,7 +45,7 @@ session_start();
                                 <a href="#"><li class="dropdown__list-item">Orders</li></a>
                             </span>
                         <?php else: ?>
-                            <li>Create Store</li>
+                            <a href="create-store"><li>Create Store</li></a>
                         <?php endif; ?>
                         <a href=""><li class="dropdown__item">Account Settings</li></a>
                         <a href="logout"><li class="dropdown__item">Sign Out</li></a>
