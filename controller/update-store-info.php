@@ -7,7 +7,8 @@ $originalStoreData = get_store_data();
 $originalStoreData = $originalStoreData[0];
 
 // Function to check if a value has changed
-function hasChanged($original, $submitted) {
+function hasChanged($original, $submitted)
+{
     return $original !== $submitted;
 }
 
@@ -22,14 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $primColor = sanitize_color($_POST['prim_color']);
     $secColor = sanitize_color($_POST['sec_color']);
     $triColor = sanitize_color($_POST['tri_color']);
-
-    $socials = [];
-    for ($i = 1; $i <= 3; $i++) {
-        $social = $_POST["social_$i"];
-        $socialInput = $_POST["social_input_$i"];
-        $socials["social_$i"] = ($social !== 'none') ? $socialInput : '';
-    }
-
+    require "../debug.php";
     // Check if values have changed
     $changes = [];
 
@@ -48,17 +42,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (hasChanged($originalStoreData['highlight_color'], $triColor)) {
         $changes['highlight_color'] = $triColor;
     }
+
+    $socials = [];
+    for ($i = 1; $i <= 3; $i++) {
+        $social = $_POST["social_$i"];
+        $socialLink = $_POST["social_link_$i"];
+        $socials["social_$i"] = ($social !== 'none') ? $social : $socialLink;
+        $socials["social_link_$i"] = $socialLink;
+    }
     foreach ($socials as $key => $value) {
+        list($platform, $index) = explode("_", $key);
+    
+        // Check if the value has changed
         if (hasChanged($originalStoreData[$key], $value)) {
             $changes[$key] = $value;
         }
     }
-    if(empty($changes)) {
+;
+
+    // Handle image uploads
+    if (isset($_FILES['banner_image']) && $_FILES['banner_image']['error'] === UPLOAD_ERR_OK) {
+        $allowedExtensions = ['jpg', 'jpeg'];
+        $bannerExtension = strtolower(pathinfo($_FILES['banner_image']['name'], PATHINFO_EXTENSION));
+
+        if (hasChanged($originalStoreData['banner'], $_FILES['banner_image']) && in_array($bannerExtension, $allowedExtensions)) {
+            // Read and encode the image file data
+            $bannerData = file_get_contents($_FILES['banner_image']['tmp_name']);
+            $bannerBase64 = $bannerData;
+
+            // Update the changes array with the encoded image data
+            $changes['banner'] = $bannerBase64;
+        } else {
+            // Handle invalid file type
+            $_SESSION['error'] = "Invalid file type for banner image. Please upload a JPEG file.";
+            header('Location: ../manage-store');
+            exit();
+        }
+    }
+
+    if (isset($_FILES['logo_image']) && $_FILES['logo_image']['error'] === UPLOAD_ERR_OK) {
+        $allowedExtensions = ['jpg', 'jpeg'];
+        $logoExtension = strtolower(pathinfo($_FILES['logo_image']['name'], PATHINFO_EXTENSION));
+
+        if (hasChanged($originalStoreData['logo'], $_FILES['logo_image']) && in_array($logoExtension, $allowedExtensions)) {
+            // Read and encode the image file data
+            $logoData = file_get_contents($_FILES['logo_image']['tmp_name']);
+            $logoBase64 = $logoData;
+
+            // Update the changes array with the encoded image data
+            $changes['logo'] = $logoBase64;
+        } else {
+            // Handle invalid file type
+            $_SESSION['error'] = "Invalid file type for logo image. Please upload a JPEG file.";
+            header('Location: ../manage-store');
+            exit();
+        }
+    }
+
+    if (empty($changes)) {
         $_SESSION['success'] = "No changes made";
         header('Location: ../manage-store');
     }
+
     // Now $changes array contains only the fields that have changed
     // Perform the database update with $changes
+    // Add your code here to update the database with $changes
     update_store_data($changes);
+
+    // Redirect to the manage store page
+    header('Location: ../manage-store');
 }
 ?>

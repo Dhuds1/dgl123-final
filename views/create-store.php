@@ -19,6 +19,7 @@ if (isset($_SESSION['success']['slug'])) {
 
 ?>
 <?php if(!isset($_SESSION['success'])): ?>
+    <BR>    </BR>
 <form action="controller/check-store.php" method="post">
     <label for="check_store_name">Store</label>
     <input name="check_store_name" id="check_store_name" type="text" value="<?= isset($_SESSION['store_name'])? $_SESSION['store_name']: '' ?>">

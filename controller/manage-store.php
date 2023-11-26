@@ -20,7 +20,14 @@ function update_store_data($data)
         $sql .= "description = :description, ";
         $params[':description'] = $data['description'];
     }
-
+    if(isset($data['banner'])){
+        $sql .= 'banner = :banner, ';
+        $params[':banner'] = $data['banner'];
+    }
+    if(isset($data['logo'])){
+        $sql .= 'logo = :logo, ';
+        $params[':logo'] = $data['logo'];
+    }
     if (isset($data['primary_color'])) {
         $sql .= "primary_color = :primary_color, ";
         $params[':primary_color'] = $data['primary_color'];
@@ -35,12 +42,18 @@ function update_store_data($data)
         $sql .= "highlight_color = :highlight_color, ";
         $params[':highlight_color'] = $data['highlight_color'];
     }
-
     for ($i = 1; $i <= 3; $i++) {
         $socialKey = "social_$i";
+        $socialLinkKey = "social_link_$i";
+    
         if (isset($data[$socialKey])) {
             $sql .= "$socialKey = :$socialKey, ";
             $params[":$socialKey"] = $data[$socialKey];
+        }
+    
+        if (isset($data[$socialLinkKey])) {
+            $sql .= "$socialLinkKey = :$socialLinkKey, ";
+            $params[":$socialLinkKey"] = $data[$socialLinkKey];
         }
     }
 

@@ -1,76 +1,253 @@
-<?php 
-$getStoreData = function() {
+<?php
+$getStoreData = function () {
   require "controller/manage-store.php";
-  $store = get_store_data(); 
+  $store = get_store_data();
   return $store[0];
 };
 $store = $getStoreData();
-
 ?>
-<form action="controller/update-store-info.php" method="post">
-  <h2>Manage Store</h2>
-  <?= isset($_SESSION['success'])?$_SESSION['success']:''?>
-  <?php $_SESSION['success'] = null ?>
-  <h3>Store Name <?= $store['name']?></h3>
-  <h3>Store Slug <?= $store['slug']?></h3> 
-  <label for="description">Store Description</label><br>
-  <textarea name="description" id="description" cols="30" rows="10" maxlength="100"><?=isset($store['description'])? $store['description'] : ''?></textarea>
-   <p id="char-count">Remaining characters: 100</p>
-  <br>
-  store banner
-  <?=isset($store['banner'])? $store['banner'] : 'No Banner'?>
-  store logo
-  <?=isset($store['logo'])? $store['logo'] : 'No Logo'?>
-  <div>
-    <h2>Store Colours</h2>
-    <p>hex values only</p>
-    <a href="https://coolors.com" target="_blank">Need help with colors? Try here!</a><br>
-    <label for="prim_color">Primary Color</label>
-    #<input type="text" name="prim_color" id="prim_color" value="<?= isset($store)? $store['primary_color']: "" ?>"><br>
-    <label for="sec_color">Secondary Color</label>
-    #<input type="text" name="sec_color" id="sec_color" value="<?= isset($store)? $store['secondary_color']: "" ?>"><br>
-    <label for="tri_color">Highlight Color</label>
-    #<input type="text" name="tri_color" id="tri_color"value="<?= isset($store)? $store['highlight_color']: "" ?>">
-  </div>
-  <div>
-    <h2>Socials</h2>
-    <?php for ($i = 1; $i <= 3; $i++): ?>
-      <div>
+<?= isset($_SESSION['success']) ? $_SESSION['success'] : '' ?>
+<?php $_SESSION['success'] = null ?>
+<form action="controller/update-store-info.php" method="post" enctype="multipart/form-data">
+  <div class="store__header-wrapper">
+    <style>
+      .nav-bar-main {
+        position: absolute;
+        top: 0;
+      }
 
-        <label for="social_<?= $i ?>"><?= $i ?></label>
-        <select name="social_<?= $i ?>" id="social_<?= $i ?>" onchange="toggleInputRequired(this)">
-        <option value="none" <?= empty($store["social_$i"]) ? 'selected' : '' ?>>None</option>
-        <option value="reddit" <?= $store["social_$i"] === 'reddit' ? 'selected' : '' ?>>Reddit</option>
-        <option value="tumblr" <?= $store["social_$i"] === 'tumblr' ? 'selected' : '' ?>>Tumblr</option>
-        <option value="twitter" <?= $store["social_$i"] === 'twitter' ? 'selected' : '' ?>>Twitter</option>
-        <option value="pinterest" <?= $store["social_$i"] === 'pinterest' ? 'selected' : '' ?>>Pinterest</option>
-        <option value="facebook" <?= $store["social_$i"] === 'facebook' ? 'selected' : '' ?>>Facebook</option>
-        <option value="instagram" <?= $store["social_$i"] === 'instagram' ? 'selected' : '' ?>>Instagram</option>
-      </select>
-      <input type="text" name="social_input_<?= $i ?>" placeholder="Social <?= $i ?>" value="<?= $store["social_$i"] ?>">
+      .store__manage-settings--wrapper {
+        background-color: #ffffff;
+        position: relative;
+        top: 20px;
+        z-index: 99;
+        padding: .5rem;
+      }
+
+      .store__manage-settings {
+        text-align: center;
+      }
+
+      .store__banner-graphics {
+        width: 100vw;
+        height: 500px;
+        top: 0;
+      }
+
+      .edit__store-values {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 2rem;
+        background-color: pink;
+        margin-top: 60px;
+      }
+
+      .store__front-image {
+        border-radius: 50vw 50vw 0 50vw;
+      }
+
+      .add-icon-center {
+        height: 25px;
+        background-color: black;
+        padding: 20px 10px;
+        border-radius: 10px 0 0 0;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+        color: white;
+      }
+
+      .add-icon-center:hover {
+        cursor: pointer;
+      }
+
+      .add-icon-center:hover>* {
+        opacity: .8;
+      }
+    </style>
+    <div class="store__manage-settings--wrapper">
+      <h1 class="store__manage-settings"><b><a href='store?name=<?= $_SESSION['store'] ?>'>
+            <?= $store['name'] ?>
+          </a></b> store front manager</h1>
     </div>
-    <?php endfor; ?>
+    <div class="store__banner-graphics">
+      <div class="store__banner-image">
+        <label for="banner_image" class="upload-label">
+          <div class="add-icon-center">
+            <i class="fa-solid fa-image fa-xl" style="color: white;"></i><span>Upload</span>
+          </div>
+        </label>
+        <input class="file__upload-image" type="file" id="banner_image" name="banner_image" accept="image/jpeg"
+          onchange="handleBannerUpload()">
+        <img id="bannerPreview" style="background-color:#<?= $store['primary_color'] ?>"
+          src="data:image/jpeg;base64,<?= base64_encode($store['banner']) ?>" alt="">
+        <div class="store__socials">
+          <ul>
+            <!-- CHECKS FOR SOCIAL MEDIAS -->
+            <li><a href="<?= $store['social_link_1'] ?>">
+                <?= $store['social_1'] ?>
+              </a></li>
+            <li><a href="<?= $store['social_link_2'] ?>">
+                <?= $store['social_2'] ?>
+              </a></li>
+            <li><a href="<?= $store['social_link_3'] ?>">
+                <?= $store['social_3'] ?>
+              </a></li>
+          </ul>
+        </div>
+        <div class="store__front-image">
+          <label for="logo_image" class="upload-label">
+            <div class="add-icon-center">
+              <i class="fa-solid fa-image fa-xl" style="color: white;"></i> <span>Upload</span>
+            </div>
+          </label>
+          <input class="file__upload-image" type="file" id="logo_image" name="logo_image" accept="image/jpeg"
+            onchange="handleLogoUpload()">
+          <img id="logoPreview" src="data:image/jpeg;base64,<?= base64_encode($store['logo']) ?>" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="edit__store-values">
+
+      <label class="store-name">Store Name</label>
+      <input type="text" value="<?= $store['name'] ?>" disabled>
+
+      <label for="description">Store Description</label><br>
+      <div class="store_description-wrapper">
+        <textarea name="description" id="description" cols="30" rows="10"
+          maxlength="100"><?= isset($store['description']) ? $store['description'] : '' ?></textarea>
+        <p id="char-count">100</p>
+      </div>
+
+      <div>
+        <h2>Store Colours</h2>
+        <p>hex values only</p>
+        <a href="https://coolors.com" target="_blank">Need help with colors? Try here!</a><br>
+        <label for="prim_color">Primary Color</label>
+        <input type="text" name="prim_color" id="prim_color" oninput="validateHexColorInput(this)"
+          value="<?= isset($store) ? $store['primary_color'] : "" ?>"><br>
+
+        <label for="sec_color">Secondary Color</label>
+        <input type="text" name="sec_color" id="sec_color" oninput="validateHexColorInput(this)"
+          value="<?= isset($store) ? $store['secondary_color'] : "" ?>"><br>
+
+        <label for="tri_color">Highlight Color</label>
+        <input type="text" name="tri_color" id="tri_color" oninput="validateHexColorInput(this)"
+          value="<?= isset($store) ? $store['highlight_color'] : "" ?>">
+
+
+      </div>
+      <div>
+        <h2>Socials</h2>
+        <?php for ($i = 1; $i <= 3; $i++): ?>
+          <div>
+            <label for="social_<?= $i ?>">
+              <?= $i ?>
+            </label>
+            <select name="social_<?= $i ?>" id="social_<?= $i ?>" onchange="toggleInputRequired(this)">
+              <option value="none" <?= empty($store["social_$i"]) ? 'selected' : '' ?>>None</option>
+              <option value="reddit" <?= $store["social_$i"] === 'reddit' ? 'selected' : '' ?>>Reddit</option>
+              <option value="tumblr" <?= $store["social_$i"] === 'tumblr' ? 'selected' : '' ?>>Tumblr</option>
+              <option value="twitter" <?= $store["social_$i"] === 'twitter' ? 'selected' : '' ?>>Twitter</option>
+              <option value="pinterest" <?= $store["social_$i"] === 'pinterest' ? 'selected' : '' ?>>Pinterest</option>
+              <option value="facebook" <?= $store["social_$i"] === 'facebook' ? 'selected' : '' ?>>Facebook</option>
+              <option value="instagram" <?= $store["social_$i"] === 'instagram' ? 'selected' : '' ?>>Instagram</option>
+            </select>
+            <input type="text" name="social_link_<?= $i ?>" placeholder="Social <?= $i ?>"
+              value="<?= $store["social_$i"] !== 'none' ? $store["social_link_$i"] : '' ?>">
+          </div>
+        <?php endfor; ?>
+      </div>
+
+      <button id="reset" type="reset">Reset</button>
+      <button type="submit">Save</button>
+
+    </div>
   </div>
-
-  <button type="reset">Reset</button>
-  <button type="submit">Save</button>
-
 </form>
 
 <script>
+  document.getElementById('reset').addEventListener('click', () => {
+    window.location.reload();
+  })
   function toggleInputRequired(selectElement) {
     const inputElement = selectElement.nextElementSibling;
     inputElement.required = selectElement.value !== 'none';
   }
+
   var textarea = document.getElementById('description');
-    var charCount = document.getElementById('char-count');
+  var charCount = document.getElementById('char-count');
 
-    textarea.addEventListener('input', function() {
-        updateCharacterCount();
-    });
+  textarea.addEventListener('input', function () {
+    updateCharacterCount();
+  });
 
-    function updateCharacterCount() {
-        var remainingChars = textarea.maxLength - textarea.value.length;
-        charCount.textContent = "Remaining characters: " + remainingChars;
+  // Call updateCharacterCount on page load
+  window.addEventListener('load', function () {
+    updateCharacterCount();
+  });
+
+  function updateCharacterCount() {
+    var remainingChars = textarea.maxLength - textarea.value.length;
+    charCount.textContent = remainingChars + " / 100";
+  }
+  window.onload = function () {
+    addHashToColorInput('prim_color');
+    addHashToColorInput('sec_color');
+    addHashToColorInput('tri_color');
+  };
+
+  function addHashToColorInput(inputId) {
+    const inputElement = document.getElementById(inputId);
+    inputElement.value = '#' + inputElement.value;
+  }
+  function validateHexColorInput(inputElement) {
+    // Remove non-hex characters and ensure '#' is at the beginning
+    inputElement.value = '#' + inputElement.value.replace(/[^a-fA-F0-9]/g, '').slice(0, 6);
+  }
+  function updateCharacterCount() {
+    var remainingChars = textarea.maxLength - textarea.value.length;
+    charCount.textContent = remainingChars + " / 100";
+  }
+  function handleLogoUpload() {
+    const input = document.getElementById('logo_image');
+    const logoPreview = document.getElementById('logoPreview');
+
+    // Check if a file is selected
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+
+      // Read the uploaded file as a data URL
+      reader.onload = function (e) {
+        // Update the src attribute of the image with the data URL
+        logoPreview.src = e.target.result;
+      };
+
+      reader.readAsDataURL(input.files[0]);
     }
+  }
+  function handleBannerUpload() {
+    const input = document.getElementById('banner_image');
+    const bannerPreview = document.getElementById('bannerPreview');
+
+    // Check if a file is selected
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+
+      // Read the uploaded file as a data URL
+      reader.onload = function (e) {
+        // Update the src attribute of the image with the data URL
+        bannerPreview.src = e.target.result;
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 </script>

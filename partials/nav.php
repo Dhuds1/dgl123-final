@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<div class="nav__spacer">a</div>
+<div class="nav__spacer"></div>
 <nav class="nav-bar-main">
     <ul class="nav-bar__content">
         <li class="nav-bar__logo">
