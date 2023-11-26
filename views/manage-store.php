@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION['store'])){
+  header('Location: index');
+  exit();
+}
 $getStoreData = function () {
   require "controller/manage-store.php";
   $store = get_store_data();
@@ -47,30 +51,6 @@ $store = $getStoreData();
       .store__front-image {
         border-radius: 50vw 50vw 0 50vw;
       }
-
-      .add-icon-center {
-        height: 25px;
-        background-color: black;
-        padding: 20px 10px;
-        border-radius: 10px 0 0 0;
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        z-index: 99;
-        color: white;
-      }
-
-      .add-icon-center:hover {
-        cursor: pointer;
-      }
-
-      .add-icon-center:hover>* {
-        opacity: .8;
-      }
     </style>
     <div class="store__manage-settings--wrapper">
       <h1 class="store__manage-settings"><b><a href='store?name=<?= $_SESSION['store'] ?>'>
@@ -88,20 +68,45 @@ $store = $getStoreData();
           onchange="handleBannerUpload()">
         <img id="bannerPreview" style="background-color:#<?= $store['primary_color'] ?>"
           src="data:image/jpeg;base64,<?= base64_encode($store['banner']) ?>" alt="">
-        <div class="store__socials">
+          <div class="store__socials">
           <ul>
-            <!-- CHECKS FOR SOCIAL MEDIAS -->
-            <li><a href="<?= $store['social_link_1'] ?>">
-                <?= $store['social_1'] ?>
-              </a></li>
-            <li><a href="<?= $store['social_link_2'] ?>">
-                <?= $store['social_2'] ?>
-              </a></li>
-            <li><a href="<?= $store['social_link_3'] ?>">
-                <?= $store['social_3'] ?>
-              </a></li>
+            <?php for ($i = 1; $i <= 3; $i++): ?>
+               <?php 
+               if($store["social_link_$i"] == null){
+                  break;
+               } 
+               ?>
+              <li>
+                <a href="<?= $store["social_link_$i"] ?>">
+                  <?php
+                  switch ($store["social_$i"]) {
+                    case 'reddit':
+                      echo '<i class="fa-brands fa-reddit fa-xl"></i>';
+                      break;
+                    case 'tumblr':
+                      echo '<i class="fa-brands fa-tumblr fa-xl"></i>';
+                      break;
+                    case 'twitter':
+                      echo '<i class="fa-brands fa-twitter fa-xl"></i>';
+                      break;
+                    case 'pinterest':
+                      echo '<i class="fa-brands fa-pinterest fa-xl"></i>';
+                      break;
+                    case 'facebook':
+                      echo '<i class="fa-brands fa-facebook fa-xl"></i>';
+                      break;
+                    case 'instagram':
+                      echo '<i class="fa-brands fa-instagram fa-xl"></i>';
+                      break;
+                    default:
+                  }
+                  ?>
+                </a>
+              </li>
+            <?php endfor; ?>
           </ul>
         </div>
+
         <div class="store__front-image">
           <label for="logo_image" class="upload-label">
             <div class="add-icon-center">
@@ -126,7 +131,8 @@ $store = $getStoreData();
         <p id="char-count">100</p>
       </div>
 
-      <div>
+      <div class="manage__store-grid">
+      <div class="manage__store-grid--colors">
         <h2>Store Colours</h2>
         <p>hex values only</p>
         <a href="https://coolors.com" target="_blank">Need help with colors? Try here!</a><br>
@@ -165,9 +171,11 @@ $store = $getStoreData();
           </div>
         <?php endfor; ?>
       </div>
-
-      <button id="reset" type="reset">Reset</button>
-      <button type="submit">Save</button>
+      </div>
+      <div class="manage__Store--button-controls">
+        <button id="reset" type="reset">Reset</button>
+        <button type="submit" class="green__button">Save</button>
+      </div>
 
     </div>
   </div>

@@ -142,6 +142,9 @@ h3 {
     justify-items: center;
     row-gap: 2rem;
 }
+i:hover {
+    color: cyan;
+}
 @media screen and (max-width:1400px){
     .product__wrapper {
         grid-template-columns: repeat(3, 1fr);
@@ -597,20 +600,24 @@ h2.card__product-price {
 }
 /* socials */
 .store__socials {
+    display: inline;
+    background-color: black;
     position: absolute;
-    right: 0;
-    bottom: 15px;
-    width: 40%;
+    left: 0;
+    bottom: 0;
 }
 .store__socials ul {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
     gap: 20px;
 }
 .store__socials ul li{
     list-style-type: none;
     text-decoration: none;
-
+    
     font-size: var(--fs_med);
     font-weight: var(--fw_semi);
 }
@@ -760,4 +767,74 @@ h2.card__product-price {
     position: absolute;
     bottom: 10px;
     right: 10px;
+}
+.add-icon-center {
+    height: 25px;
+    background-color: black;
+    padding: 20px 10px;
+    border-radius: 10px 0 0 0;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    color: white;
+  }
+
+  .add-icon-center:hover {
+    cursor: pointer;
+  }
+
+  .add-icon-center:hover>* {
+    opacity: .8;
+  }
+.manage__store-grid {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    padding-block: 20px 10px;
+}
+.manage__store-grid--colors {
+    display: flex;
+    flex-direction: column;
+}
+.manage__store-grid--colors label {
+    margin-top: 5px;
+}
+.manage__Store--button-controls {
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+button:hover {
+    filter: brightness(.9);
+}
+.green__button {
+    background-color: mediumspringgreen;
+}
+.account-settings__grid {
+    display: flex;
+    flex-direction: column;
+}
+.account_profile-picture {
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1;
+    background-color: #222;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.account_profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

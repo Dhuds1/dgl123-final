@@ -66,6 +66,7 @@ if (!empty($errors)) {
 create_user($_POST, $usersDB);
 
 // Redirect and unset session variables
+
 header("Location: ../login");
 unset($_SESSION['old_values']);
 
@@ -79,9 +80,10 @@ function create_user($postData, $usersDB) {
     $password = password_hash($postData['password'], PASSWORD_BCRYPT); // Hash the password for security
 
     // Prepare the SQL statement for inserting data
-    $sql = "INSERT INTO cracked_user (name, username, email, password) VALUES (:name, :username, :email, :password)";
+    $sql = "INSERT INTO cracked_user (firstname, lastname, username, email, password) VALUES (:firstname, :lastname, :username, :email, :password)";
     $parameters = [
-        ":name"=> $first_name." ".$last_name,
+        ":firstname"=> $first_name,
+        ":lastname"=> $last_name,
         ':username' => $username,
         ':email' => $email,
         ':password' => $password,
@@ -90,11 +92,26 @@ function create_user($postData, $usersDB) {
     // Execute the SQL statement
     $usersDB->query($sql, $parameters);
 
-    // You can check for success or handle errors as needed
+    // Check if the user was successfully registered
     if ($usersDB->rowCount() > 0) {
-        echo "User registered successfully!";
+        // Automatically log in the user
+        $user = $usersDB->check_login($username, $postData['password']);
+
+        if ($user) {
+            // Login successful
+            session_start();
+            $_SESSION['username'] = $user['username']; // Store the username in the session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['store'] = $usersDB->get_store($user['id']);
+            header("Location: ../account"); // Redirect to the dashboard or another secured page
+            exit();
+        } else {
+            // Login failed
+            echo "Error logging in after registration.";
+        }
     } else {
+        // Registration failed
         echo "Error registering user.";
     }
 }
-?>
+

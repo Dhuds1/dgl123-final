@@ -16,12 +16,12 @@ session_start();
                 <a href="cart">🛒</a>
             </li>
             <?php if (isset($_SESSION['username'])): ?>
-                <li class="nav-bar__item">
+                <!-- <li class="nav-bar__item">
                     <a href="wishlist?<?= $SESSION['username']?>">❤️</a>
-                </li>
-                <li class="nav-bar__item">
+                </li> -->
+                <!-- <li class="nav-bar__item">
                     <a href="updates">🔔&#9660;</a>
-                </li>
+                </li> -->
                 <li id="accountDropDown" class="nav-bar__item accountDropDown">
                     <a>👤&#9660;</a>
                     <ul id="dropDownList" class="nav-bar__dropdown">
@@ -47,7 +47,7 @@ session_start();
                         <?php else: ?>
                             <a href="create-store"><li>Create Store</li></a>
                         <?php endif; ?>
-                        <a href="account-settings"><li class="dropdown__item">Account Settings</li></a>
+                        <a href="account"><li class="dropdown__item">Account</li></a>
                         <a href="logout"><li class="dropdown__item">Sign Out</li></a>
                     </ul>
                 </li>

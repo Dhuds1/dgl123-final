@@ -2,6 +2,15 @@
     require "loader.php";
     require "controller/statements.php";
     $name = $_GET["name"];
+    if(!isset($_GET["name"])){
+        if(isset($_SESSION["store"])){
+            header("Location: manage-store");
+            exit;
+        }else {
+            header("Location: all-stores");
+            exit;
+        }
+    }
     $query_store = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 
 // Query to retrieve store data based on the slug

@@ -6,14 +6,24 @@ require "autoloader.php";
 $pdo = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 
 // Retrieve clear text passwords from the database
-$stmt = $pdo->queryAll('SELECT id, password FROM cracked_user');
+$stmt = $pdo->queryAll('SELECT id, name FROM cracked_user');
 $users = $stmt;
 
 // Hash and update each password
 foreach ($users as $user) {
-    $hashedPassword = password_hash($user['password'], PASSWORD_BCRYPT);
-    $updateStmt = $pdo->query("UPDATE cracked_user SET password = :hashedPassword WHERE id = :id", ['hashedPassword' => $hashedPassword, 'id' => $user['id']]);
-}
+    $names = explode(' ', $user['name']);
 
-echo "Passwords hashed and updated successfully!";
-?>
+    // Assuming you want to update the firstname and lastname columns based on the exploded names
+    $sql = "UPDATE cracked_user SET firstname = :firstname, lastname = :lastname WHERE id = :id";
+    $params = [
+        ':id' => $user['id'],
+        ':firstname' => $names[0],
+        ':lastname' => $names[1]
+    ];
+
+    // Execute the update query
+    $pdo->query($sql, $params);
+
+    // Output the result
+    echo $names[0] . " " . $names[1] . "<br>";
+}

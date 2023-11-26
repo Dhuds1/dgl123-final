@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user['username']; // Store the username in the session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['store'] = $usersDB->get_store($user['id']);
-        header("Location: ../dashboard.php"); // Redirect to the dashboard or another secured page
+        header("Location: ../account"); // Redirect to the dashboard or another secured page
         exit();
     } else {
         // Login failed

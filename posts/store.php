@@ -8,20 +8,44 @@
       <?php else:?>
       <div class="store__banner-graphic-fill" style="background-color:#<?= $store['primary_color'] ?>"></div>
       <?php endif;?>
-         <div class="store__socials">
-            <ul>
-               <!-- CHECKS FOR SOCIAL MEDIAS -->
-               <?php if($store['social_1']) :?>
-               <li><a href="<?= $store['social_1_link']?>"><?= $store['social_1']?></a></li>
-               <?php endif;?>
-               <?php if($store['social_2']) :?>
-               <li><a href="<?= $store['social_2_link']?>"><?= $store['social_2']?></a></li>
-               <?php endif;?>
-               <?php if($store['social_3']) :?>
-               <li><a href="<?= $store['social_3_link']?>"><?= $store['social_3']?></a></li>
-               <?php endif;?>
-            </ul>
-         </div>
+      <div class="store__socials">
+          <ul>
+            <?php for ($i = 1; $i <= 3; $i++): ?>
+               <?php 
+               if($store["social_link_$i"] == null){
+                  break;
+               } 
+               ?>
+              <li>
+                <a href="<?= $store["social_link_$i"] ?>">
+                  <?php
+                  switch ($store["social_$i"]) {
+                    case 'reddit':
+                      echo '<i class="fa-brands fa-reddit fa-xl"></i>';
+                      break;
+                    case 'tumblr':
+                      echo '<i class="fa-brands fa-tumblr fa-xl"></i>';
+                      break;
+                    case 'twitter':
+                      echo '<i class="fa-brands fa-twitter fa-xl"></i>';
+                      break;
+                    case 'pinterest':
+                      echo '<i class="fa-brands fa-pinterest fa-xl"></i>';
+                      break;
+                    case 'facebook':
+                      echo '<i class="fa-brands fa-facebook fa-xl"></i>';
+                      break;
+                    case 'instagram':
+                      echo '<i class="fa-brands fa-instagram fa-xl"></i>';
+                      break;
+                    default:
+                  }
+                  ?>
+                </a>
+              </li>
+            <?php endfor; ?>
+          </ul>
+        </div>
          <div class="store__front-image">
             <!-- CHECKS FOR STORE LOGO -->
          <?php if ($store['logo']) :?>
