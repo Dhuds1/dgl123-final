@@ -5,7 +5,7 @@ $account = get_account_information($_SESSION['user_id'])
 <div class="wrapper">
   <h1>Account</h1>
   <div class="account-settings__grid">
-    <form action="../controller/update-user-info.php" method="post" enctype="multipart/form-data">
+    <form action="controller/update-user-info.php" method="post" enctype="multipart/form-data">
 
       <h2>Profile Picture</h2>
       <h3>aspect ration 1:1</h3>

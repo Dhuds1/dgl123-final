@@ -7,3 +7,30 @@ function get_account_information($account_id) {
     $store_info = $usersDB->queryAll($sql, $param);
     return $store_info[0];
 }
+
+function update_user_info($user_id, $changes) {
+    require "statements.php";
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+
+    // Update user information in the database based on the provided changes
+    $sql = "UPDATE cracked_user SET ";
+    $params = [];
+
+    foreach ($changes as $field => $value) {
+        $sql .= "$field = :$field, ";
+        $params[":$field"] = $value;
+    }
+    require "../debug.php";
+    // Remove the trailing comma and space from the SQL statement
+    $sql = rtrim($sql, ', ');
+
+    $sql .= " WHERE id = :id";
+    $params[':id'] = $user_id;
+
+    // Execute the update query
+    $usersDB->query($sql, $params);
+    // You may want to add error handling or return a success message
+    header('Location: ../account');
+    exit;
+}
+?>
