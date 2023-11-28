@@ -72,7 +72,14 @@ class DB
       $this->query($sql, $param);
       return $this->rowCount() > 0;
   } 
-
+  public function get_user($id)
+  {
+      $sql = "SELECT * FROM cracked_user WHERE id = :id";
+      $param = [":id" => $id];
+      $this->query($sql, $param);
+      $user = $this->find();
+      return $user;
+  } 
   public function check_login($username_or_email, $password)
   {
     // Prepare the SQL statement to check user credentials

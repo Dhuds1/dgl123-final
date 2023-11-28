@@ -30,8 +30,10 @@ function update_user_info($user_id, $changes) {
 
     // Execute the update query
     $usersDB->query($sql, $params);
+    $user = $usersDB->get_user($user_id);
     // You may want to add error handling or return a success message
     $_SESSION['success'] = "Updated Info";
+    $_SESSION['pfp'] = $user['picture'];
     header('Location: ../account');
     exit;
 }

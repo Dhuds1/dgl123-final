@@ -306,6 +306,12 @@ i:hover {
     aspect-ratio: 1;
     background-color: black;
     border-radius: 50%;
+    overflow: hidden;
+}
+.profile__picture-menu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 /* PROFILE STYLES */
 .nav-bar__dropdown-item.tab {
