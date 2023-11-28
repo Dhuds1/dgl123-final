@@ -4,8 +4,9 @@ function get_account_information($account_id) {
     $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
     $sql = "SELECT * FROM cracked_user WHERE id = :id";
     $param = [":id" => $_SESSION['user_id']];   
-    $store_info = $usersDB->queryAll($sql, $param);
-    return $store_info[0];
+    $user_info = $usersDB->queryAll($sql, $param);
+    $_SESSION['is_public'] = $user_info[0]['is_public'];
+    return $user_info[0];
 }
 
 function update_user_info($user_id, $changes) {
@@ -30,6 +31,7 @@ function update_user_info($user_id, $changes) {
     // Execute the update query
     $usersDB->query($sql, $params);
     // You may want to add error handling or return a success message
+    $_SESSION['success'] = "Updated Info";
     header('Location: ../account');
     exit;
 }

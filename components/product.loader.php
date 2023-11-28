@@ -71,7 +71,7 @@ try {
                   <?= $store['orders'] ?> &SmallCircle;
                </span>
                <!-- THE NAME OF THE STORE -->
-               <?= $store['name'] ?>
+               <a style="text-decoration: underline;" href="store?name=<?= $store['slug'] ?>"><?= $store['name'] ?></a>
             </h3>
             <?php endif ?>
             <!-- END OF CONDITIONAL PRINTING STATEMENT -->

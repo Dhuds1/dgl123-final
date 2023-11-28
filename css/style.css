@@ -838,3 +838,16 @@ button:hover {
     height: 100%;
     object-fit: cover;
 }
+.account__form-info > *{
+    display: block;
+}
+.account__form-info label {
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.account__form-info input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid grey;
+}

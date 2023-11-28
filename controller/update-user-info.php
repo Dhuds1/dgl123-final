@@ -6,14 +6,26 @@ require "statements.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require "account.php";
+    
     // Sanitize and retrieve submitted form data
     $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
     $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $is_pub = $_POST['publicProfile'];
     
     // Retrieve existing user data from the database
     $account = get_account_information($_SESSION['user_id']);
-
+    
+    // Check if the new email is already used by another user
+    if ($email !== $account['email']){
+        $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+        if ($usersDB->check_value('email', $email)) {
+            // Redirect back to the account page
+            $errors[] = "$email is already taken, please try another email.";
+            header('Location: ../account');
+            exit();
+        }
+    }
     // Create an array to store the changes
     $changes = [];
 
@@ -21,23 +33,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($account['firstname'] !== $firstname) {
         $changes['firstname'] = $firstname;
     }
-
     if ($account['lastname'] !== $lastname) {
         $changes['lastname'] = $lastname;
     }
-
+    if($account['is_public'] != $is_pub){
+        $changes['is_public'] = $is_pub;
+    }
     if ($account['email'] !== $email) {
         $changes['email'] = $email;
     }
+    if(empty($changes)) {
+        $_SESSION['success'] = "No changes made";
+        header('Location: ../account');
+        exit();
+    }
     // Process the form data and update the user information
     update_user_info($_SESSION['user_id'], $changes);
-    
-    // Redirect to the account page or handle success as needed
-    header('Location: ../views/account.php');
-    exit();
 } else {
     // Handle invalid request
-    header('Location: ../error.php'); // Replace with an appropriate error page
+    header('Location: ../error'); // Replace with an appropriate error page
     exit();
 }
-?>
