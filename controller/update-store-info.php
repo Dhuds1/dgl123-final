@@ -68,10 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (hasChanged($originalStoreData['banner'], $_FILES['banner_image']) && in_array($bannerExtension, $allowedExtensions)) {
             // Read and encode the image file data
             $bannerData = file_get_contents($_FILES['banner_image']['tmp_name']);
-            $bannerBase64 = $bannerData;
-
             // Update the changes array with the encoded image data
-            $changes['banner'] = $bannerBase64;
+            $changes['banner'] = $bannerData;
         } else {
             // Handle invalid file type
             $_SESSION['error'] = "Invalid file type for banner image. Please upload a JPEG file.";

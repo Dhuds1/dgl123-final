@@ -115,7 +115,7 @@ $store = $getStoreData();
           </label>
           <input class="file__upload-image" type="file" id="logo_image" name="logo_image" accept="image/jpeg"
             onchange="handleLogoUpload()">
-          <img id="logoPreview" src="data:image/jpeg;base64,<?= base64_encode($store['logo']) ?>" alt="">
+          <img id="logoPreview" style="background-color:#<?= $store['highlight_color'] ?>" src="data:image/jpeg;base64,<?= base64_encode($store['logo']) ?>" alt="">
         </div>
       </div>
     </div>

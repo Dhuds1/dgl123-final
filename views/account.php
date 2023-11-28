@@ -25,7 +25,7 @@ $account = get_account_information($_SESSION['user_id'])
         <input class="file__upload-image" type="file" id="profile_picture" name="profile_picture" accept="image/jpeg"
           onchange="handlePFPUpload()">
         <img id="pfpPreview"
-          src="<?= isset($account['picture']) ? "data:image/jpeg;base64, " . base64_encode($account['picture']) : '' ?>"
+          src="data:image/jpeg;base64,<?= isset($account['picture'])?base64_encode($account['picture']):'' ?>"
           alt="">
       </div>
   </div>
