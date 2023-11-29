@@ -67,6 +67,8 @@
             <div>
                <?php if($store['slug'] === $_SESSION['store']):?>
                   <a href="manage-store">Manage Store</a>
+                  <br>
+                  <a href="manage-products">Manage Products</a>
                <?php endif?>
                <button>Follow Store</button>
                <button>Message</button>

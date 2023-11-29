@@ -51,9 +51,9 @@ if ($quantity != $product['quantity']) {
 }
 
 if (empty($changes)) {
-    // $_SESSION['success'] = "No changes made.";
-    // header('Location: ../manage-products');
-    // exit();
+    $_SESSION['success'] = "No changes made.";
+    header('Location: ../manage-products');
+    exit();
 } else {
     update_product($product['id'], $changes);
 }
@@ -81,5 +81,8 @@ function update_product($id, $changes)
 
     // Execute the update query
     $usersDB->query($sql, $params);
+    $_SESSION['success'] = "Successfully made changes";
+    header('Location: ../manage-products');
+    exit();
 }
 ?>

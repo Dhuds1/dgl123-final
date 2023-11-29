@@ -916,3 +916,10 @@ button:hover {
 .wrapper.display__grid textarea {
     resize: none;
 }
+.remove {
+    background-color: firebrick;
+    color: white;
+}
+.visible_product {
+    color: green;
+}

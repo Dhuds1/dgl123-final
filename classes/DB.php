@@ -80,7 +80,7 @@ class DB
         return []; // No store found, return an empty array or handle it as needed
     }
 
-    $sql = "SELECT * FROM cracked_product WHERE store_id = :id";
+    $sql = "SELECT * FROM cracked_product WHERE store_id = :id ORDER BY id DESC";
     $param = [":id" => $store['id']];
     $products = $this->queryAll($sql, $param); // Use queryAll to get an array of results
     return $products;

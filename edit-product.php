@@ -21,8 +21,8 @@ if ($store['id'] !== $product['store_id']) {
 </div>
 <div class="wrapper display__grid">
    <h1 style="grid-column: 1 / span 4; margin-bottom: 1rem;">
-      Product manager
-      <a href="add-new-product">Add New</a>
+      Edititing '
+      <?= $product['name'] ?>'
    </h1>
    <form action="controller/edit-product.php" method="post" enctype="multipart/form-data">
       <div class="card__product-image">
@@ -61,6 +61,7 @@ if ($store['id'] !== $product['store_id']) {
 
       <label for="product_price">Product Price</label>
       <input type="text" id="product_price" name="product_price" value="<?= $product['price'] ?>">
+      <br>
 
       <!-- Hidden input for product ID -->
       <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
@@ -69,6 +70,22 @@ if ($store['id'] !== $product['store_id']) {
       <button id="reset" type="reset">Reset</button>
       <button class="green__button" type="submit">Save</button>
    </form>
+   <form action="controller/product-visibility.php" method="post">
+      <!-- Your form fields go here, if any -->
+      <input type="hidden" name="slug" value="<?= $product['slug'] ?>">
+      <input type="hidden" name="id" value="<?= $product['id'] ?>">
+      <button class="<?= $product['is_visible'] === 1 ? 'green__button': ''?>" type="submit" name="hide">
+         <?php if($product['is_visible'] === 1): ?>
+            Product Visible
+         <?php else: ?>
+            Product Hidden
+         <?php endif ?>
+      </button>
+      <br>
+      <br>
+      <button class="remove" type="submit" name="delete">Delete</button>
+   </form>
+
 </div>
 <script>
    document.getElementById('reset').addEventListener('click', e => {
