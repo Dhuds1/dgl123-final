@@ -6,7 +6,7 @@ function get_store_data()
 {
     require "statements.php";
 
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']);;
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
     $sql = "SELECT * FROM cracked_store WHERE user_id = :id";
     $param = [":id" => $_SESSION['user_id']];
     $store_info = $usersDB->queryAll($sql, $param);
@@ -18,7 +18,7 @@ function update_store_data($data)
 {
     require "statements.php";
 
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']);;
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 
     $sql = "UPDATE cracked_store SET ";
     $params = [];
