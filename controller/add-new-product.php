@@ -50,7 +50,7 @@ function add_product($data)
     require "../autoloader.php";
     require "statements.php";
 
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']);;
     $store = $usersDB->get_store($_SESSION['user_id']);
     $sql = "INSERT INTO cracked_product (name, slug, description, specification, quantity, price, image, store_id) VALUES (:name, :slug, :description, :specification, :quantity, :price, :image, :store_id)";
     $param = [
