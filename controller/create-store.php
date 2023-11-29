@@ -7,7 +7,7 @@ if (!isset($_SESSION["store_name"])){
 require "../autoloader.php";
 require "statements.php";
 require "../debug.php";
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 $name = $_POST['store_name'];
 $slug = $_POST['slug'];
 

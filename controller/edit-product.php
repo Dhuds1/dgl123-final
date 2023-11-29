@@ -3,7 +3,7 @@ require "../autoloader.php";
 require "statements.php";
 require "../debug.php";
 
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 $product = $usersDB->get_products_byID($_POST['store_id'], $_POST['product_id']);
 
 if ($_POST['quantity_limit'] === 'none') {
@@ -63,7 +63,7 @@ function update_product($id, $changes)
     require "../autoloader.php";
     require "statements.php";
 
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 
     $sql = "UPDATE cracked_product SET ";
     $params = [];

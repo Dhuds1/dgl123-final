@@ -2,7 +2,7 @@
 session_start();
 require "../autoloader.php";
 require "statements.php";
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 $name = $_POST['check_store_name'];
 $_SESSION['store_name'] = $name;
 if (empty($name)) {

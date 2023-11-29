@@ -4,7 +4,7 @@ class DB
   public $conn;
   public $statement;
 
-  public function __construct($config, $user, $pass, $dbname = "cracked")
+  public function __construct($config, $user, $pass, $dbname)
   {
     $this->config = $config;
     $this->user = $user;

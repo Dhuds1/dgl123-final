@@ -1,6 +1,6 @@
 <?php
 require "controller/statements.php";
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 $user = $usersDB->get_username($_GET['name']);
 $store = $usersDB->get_store($user['id']);
 ?>

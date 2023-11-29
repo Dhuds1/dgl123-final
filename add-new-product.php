@@ -4,7 +4,7 @@ if (!isset($_SESSION['store'])) {
    header('Location: manage-products');
    exit();
 }
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
 $store = $usersDB->get_store($_SESSION['user_id']);
 ?>
 <style>
