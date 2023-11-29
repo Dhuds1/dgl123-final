@@ -8,26 +8,30 @@ $store = $usersDB->get_store($user['id']);
    <h1>
       <?= $_GET['name'] ?> Profile
    </h1>
-   <div class="profile-info">
    <?php if ($_GET['name'] === $_SESSION['username']): ?>
-      <a href="account">Edit Profile</a>
+      <a style="display: block; margin-bottom: 2rem;" href="account">Edit Profile</a>
    <?php endif; ?>
-   <!-- USER PROFILE PICTURE -->
-   <div class="profile-picture">
-      <img src="data:image/jpeg;base64,<?= isset($user['picture']) ? base64_encode($user['picture']) : '' ?>" alt="">
-   </div>
-   <!-- USER PROFILE INFORMATION -->
+   <div class="profile-info">
+      <!-- USER PROFILE PICTURE -->
+      <div class="profile-picture">
+         <img src="data:image/jpeg;base64,<?= isset($user['picture']) ? base64_encode($user['picture']) : '' ?>" alt="">
+      </div>
+      <!-- USER PROFILE INFORMATION -->
       <span>
-         Name
+         <h2>
+            Name
+         </h2>
          <?= $user['firstname'] . " " . $user['lastname'] ?>
       </span>
    </div>
-      <h2>
+   <div>
+
+      <h2 class="section__sep">
          Store
       </h2>
       <!-- USER STORE CARD -->
+      <a href="store?name=<?= $store['slug'] ?>">
       <div class="store__card on-profile">
-         <a href="store?name=<?= $store['slug'] ?>">
             <!-- CHECK FOR BANNER IMAGE -->
             <?php if ($store['banner']): ?>
                <img class="store__card--banner" src="data:image/jpeg;base64,<?= base64_encode($store['banner']) ?>" alt="">
@@ -52,6 +56,7 @@ $store = $usersDB->get_store($user['id']);
                   <?= $store['name'] ?>
                </h3>
             </div>
-         </a>
+          </div>
+        </a>
    </div>
 </div>

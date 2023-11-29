@@ -29,7 +29,7 @@
                                 <p>View Profile</p>
                             </li>
                         </a>
-                        <a href="">
+                        <a class="disabled" href="">
                             <li class="dropdown__item dropdown__devider-both">Order History</li>
                         </a>
                         <?php if ($_SESSION['store']): ?>
@@ -43,7 +43,7 @@
                                 <a href="manage-products">
                                     <li class="dropdown__list-item">Manage Products</li>
                                 </a>
-                                <a href="#">
+                                <a class="disabled" href="#">
                                     <li class="dropdown__list-item">Orders</li>
                                 </a>
                             </span>

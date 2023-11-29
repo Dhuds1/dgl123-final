@@ -870,6 +870,10 @@ button:hover {
     height: 100%;
     object-fit: cover;
 }
+.profile-info {
+    display: flex;
+    gap: 50px;
+}
 .profile-info > *{
     display: block;
 }
@@ -885,4 +889,16 @@ button:hover {
     padding: 10px 20px;
 
     color: white;
+}
+.section__sep {
+    margin-block: 2rem;
+    font-size: 2rem;
+}
+.disabled > *{
+    background-color: grey;
+    color: #222;
+    pointer-events: none;
+}
+.disabled:hover {
+    cursor: default;
 }
