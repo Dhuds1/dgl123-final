@@ -443,7 +443,7 @@ h2.card__product-price {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: firebrick;
+    color: white;
     text-transform: uppercase;
     overflow: hidden;
     position: relative;
@@ -453,7 +453,7 @@ h2.card__product-price {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
 }
 .header__home--text-content{
     position: relative;
@@ -901,4 +901,18 @@ button:hover {
 }
 .disabled:hover {
     cursor: default;
+}
+.wrapper.display__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.wrapper.display__grid label,
+.wrapper.display__grid textarea,
+.wrapper.display__grid input:not([type="checkbox"]) {
+    width: 100%;
+    display: block;
+}
+.wrapper.display__grid textarea {
+    resize: none;
 }

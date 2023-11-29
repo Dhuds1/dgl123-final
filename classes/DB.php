@@ -69,11 +69,33 @@ class DB
     $results = $this->queryAll($sql, $param);
 
     if (count($results) > 0) {
-      return $results[0]; // Access the first row and the 'store_slug' column
+      return $results[0];
     } else {
       return false;
     }
   }
+  public function get_products($user_id){
+    $store = $this->get_store($user_id);
+    if (!$store) {
+        return []; // No store found, return an empty array or handle it as needed
+    }
+
+    $sql = "SELECT * FROM cracked_product WHERE store_id = :id";
+    $param = [":id" => $store['id']];
+    $products = $this->queryAll($sql, $param); // Use queryAll to get an array of results
+    return $products;
+  }
+  public function get_products_byID($user_id, $prod_ID){
+    $store = $this->get_store($user_id);
+    if (!$store) {
+        return []; // No store found, return an empty array or handle it as needed
+    }
+
+    $sql = "SELECT * FROM cracked_product WHERE store_id = :id AND id = :prod";
+    $param = [":id" => $store['id'], ":prod" => $prod_ID];
+    $products = $this->queryAll($sql, $param); // Use queryAll to get an array of results
+    return $products[0];
+}
   public function get_store_name($slug)
   {
       $sql = "SELECT * FROM cracked_store WHERE slug = :slug";

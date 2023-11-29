@@ -1,5 +1,5 @@
 <header class="header__home">
-    <img src="images/crack_unicorn_by_drazerii_d3kdjcj-fullview.jpg" alt="">
+    <img src="images/cracked_background.jpg" alt="">
     <div class="header__home--text-content">
         <h1>Cracked Unicorn</h1>
         <h2>The best place to sell</h2>
