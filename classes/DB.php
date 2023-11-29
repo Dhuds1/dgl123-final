@@ -87,10 +87,7 @@ class DB
   }
   public function get_products_byID($user_id, $prod_ID){
     $store = $this->get_store($user_id);
-    if (!$store) {
-        return []; // No store found, return an empty array or handle it as needed
-    }
-
+    
     $sql = "SELECT * FROM cracked_product WHERE store_id = :id AND id = :prod";
     $param = [":id" => $store['id'], ":prod" => $prod_ID];
     $products = $this->queryAll($sql, $param); // Use queryAll to get an array of results

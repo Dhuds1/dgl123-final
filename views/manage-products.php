@@ -132,20 +132,4 @@ removeBtns.forEach(btn => {
         }
     });
 });
-   function handleLogoUpload(input) {
-      const logoPreview = input.closest('form').querySelector('[name="product-image"]');
-
-      // Check if a file is selected
-      if (input.files && input.files[0]) {
-         const reader = new FileReader();
-
-         // Read the uploaded file as a data URL
-         reader.onload = function (e) {
-            // Update the src attribute of the image with the data URL
-            logoPreview.src = e.target.result;
-         };
-
-         reader.readAsDataURL(input.files[0]);
-      }
-   }
 </script>
