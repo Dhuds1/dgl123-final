@@ -16,12 +16,10 @@ function update_user_info($user_id, $changes) {
     // Update user information in the database based on the provided changes
     $sql = "UPDATE cracked_user SET ";
     $params = [];
-
     foreach ($changes as $field => $value) {
         $sql .= "$field = :$field, ";
         $params[":$field"] = $value;
     }
-    require "../debug.php";
     // Remove the trailing comma and space from the SQL statement
     $sql = rtrim($sql, ', ');
 
