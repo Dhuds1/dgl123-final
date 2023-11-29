@@ -1,8 +1,7 @@
 <?php
 require "controller/account.php";
 $account = get_account_information($_SESSION['user_id'])
-?>
-
+  ?>
 <div class="wrapper">
   <h1>Account</h1>
   <div class="account-settings__grid">
@@ -16,7 +15,7 @@ $account = get_account_information($_SESSION['user_id'])
     </div>
     <form action="controller/update-user-info.php" method="post" enctype="multipart/form-data">
       <h2>Profile Picture</h2>
-      <h3>aspect ratio 1:1</h3>
+      <h3>aspect ration 1:1</h3>
       <div class="account_profile-picture">
         <label for="profile_picture" class="upload-label">
           <div class="add-icon-center">
@@ -26,29 +25,30 @@ $account = get_account_information($_SESSION['user_id'])
         <input class="file__upload-image" type="file" id="profile_picture" name="profile_picture" accept="image/jpeg"
           onchange="handlePFPUpload()">
         <img id="pfpPreview"
-          src="data:image/jpeg;base64,<?= isset($account['picture']) ? base64_encode($account['picture']) : '' ?>"
+          src="data:image/jpeg;base64,<?= isset($account['picture'])?base64_encode($account['picture']):'' ?>"
           alt="">
       </div>
+  </div>
+  <div class="account__form-info">
+    <label for="username">Username</label>
+    <input name="username" id="username" type="text" value=<?= $account['username']; ?> disabled>
+    <label for="publicProfile">Public Profile</label>
+    <div>
+      <input type="checkbox" id="publicProfile" name="publicProfile" value="1">
+      <span id="publicView" data-public-view="<?= $account['is_public'] ? 'yes' : 'no' ?>"></span>
     </div>
-    <div class="account__form-info">
-      <label for="username">Username</label>
-      <input name="username" id="username" type="text" value=<?= $account['username']; ?> disabled>
-      <label for="publicProfile">Public Profile</label>
-      <div>
-        <input type="checkbox" id="publicProfile" name="publicProfile" value="<?= $account['is_public'] ?>">
-        <span id="publicView" data-public-view="<?= $account['is_public'] === 1 ? 'yes' : 'no' ?>"></span>
-      </div>
-      <label for="firstname">First Name</label>
-      <input id="firstname" name="firstname" type="text" value="<?= $account['firstname']; ?>">
-      <label for="lastname">Last Name</label>
-      <input id="lastname" name="lastname" type="text" value="<?= $account['lastname']; ?>">
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" value="<?= $account['email']; ?>">
-      <div>
-        <button class="" type="reset">Reset</button>
-        <button class="green__button" type="submit">Submit</button>
-      </div>
+    <label for="firstname">First Name</label>
+    <input id="firstname" name="firstname" type="text" value="<?= $account['firstname']; ?>">
+    <label for="lastname">Last Name</label>
+    <input id="lastname" name="lastname" type="text" value="<?= $account['lastname']; ?>">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" value="<?= $account['email']; ?>">
+    <div>
+
+      <button class="" type="reset">Reset</button>
+      <button class="green__button" type="submit">Submit</button>
     </div>
+  </div>
   </form>
   <form action="change_password.php">
     <h2>Change Password</h2>
@@ -60,6 +60,7 @@ $account = get_account_information($_SESSION['user_id'])
       <label for="renew_password">Repeat New Password</label>
       <input type="password" name="renew_password" id="renew_password">
       <div>
+
         <button class="" type="reset">Reset</button>
         <button class="green__button" type="submit">Submit</button>
       </div>
@@ -85,35 +86,30 @@ $account = get_account_information($_SESSION['user_id'])
       reader.readAsDataURL(input.files[0]);
     }
   }
-
   window.onload = function () {
-    let publicValue = document.getElementById('publicProfile').getAttribute('value');
-    const checkbox = document.getElementById('publicProfile');
-    const isPublic = document.getElementById('publicView');
-
-    if (publicValue === '1') {
-      isPublic.textContent = "Public";
-      checkbox.checked = true;
-    } else {
-      isPublic.textContent = "Not Public";
-      checkbox.checked = false;
+    let isChecked = document.getElementById('publicView').getAttribute('data-public-view');
+    if (isChecked === 'no') {
+      publicProfile('no');
+    }
+    else {
+      publicProfile('yes');
     }
   };
 
-  document.getElementById('publicProfile').addEventListener('change', () => {
+  document.getElementById('publicProfile').addEventListener('click', () => {
     publicProfile();
   });
 
-  function publicProfile() {
+  function publicProfile(publicView) {
     const checkbox = document.getElementById('publicProfile');
+    if (publicView === 'yes') checkbox.checked = true;
     const isPublic = document.getElementById('publicView');
 
     if (checkbox.checked) {
       isPublic.textContent = "Public";
-      checkbox.setAttribute('value', '1');
     } else {
       isPublic.textContent = "Not Public";
-      checkbox.setAttribute('value', '0');
     }
   }
+
 </script>

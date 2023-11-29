@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
     $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $is_pub = ($_POST['publicProfile'] === '1') ? 1 : 0;
+    $is_pub = isset($_POST['publicProfile']) ? true : false;
 
     // Retrieve existing user data from the database
     $account = get_account_information($_SESSION['user_id']);
@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     }
+
     // Create an array to store the changes
     $changes = [];
 
