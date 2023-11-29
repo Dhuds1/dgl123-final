@@ -44,7 +44,7 @@ if ($password !== $password_confirm) {
 }
 
 // Assuming $config is defined somewhere in your code
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+$usersDB = new DB($config);
 
 if ($usersDB->check_value('email', $email)) {
     $errors[] = "$email is already taken, please try another email.";

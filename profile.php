@@ -2,7 +2,7 @@
 
 require "loader.php";
 
-   $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+   $usersDB = new DB($config);
    $is_pub = $usersDB->is_public(isset($_GET['name'])? $_GET['name']: null);
    if (!isset($_GET['name'])) {
       if($_SESSION['username']) {

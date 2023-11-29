@@ -11,7 +11,7 @@
             exit;
         }
     }
-    $query_store = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+    $query_store = new DB($config);
 
 // Query to retrieve store data based on the slug
 $query_store->query("SELECT * FROM cracked_store WHERE slug = :slug", ["slug" => $name]);

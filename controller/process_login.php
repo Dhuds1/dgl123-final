@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Assuming $config is defined somewhere in your code
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+    $usersDB = new DB($config);
 
     // Check user credentials
     $user = $usersDB->check_login($username_or_email, $password);

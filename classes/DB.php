@@ -4,17 +4,22 @@ class DB
   public $conn;
   public $statement;
 
-  public function __construct($config, $user, $pass, $dbname)
+  public function __construct($config)
   {
-    $this->config = $config;
-    $this->user = $user;
-    $this->pass = $pass;
-    $dsn = 'mysql:dbname=' . $dbname . ';' . http_build_query($config, '', ';');
-
-    $this->conn = new PDO($dsn, $user, $pass, [
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]);
+      $this->config = $config['database'];
+      $this->user = $config['accessor']['user'];
+      $this->pass = $config['accessor']['pass'];
+      
+      // Construct the DSN
+      $dsn = 'mysql:host=' . $config['database']['host'] . ';port=' . $config['database']['port'] . ';dbname=' . $config['database']['db'] . ';charset=' . $config['database']['charset'];
+  
+      // Create a PDO instance
+      $this->conn = new PDO($dsn, $this->user, $this->pass, [
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+      ]);
   }
+  
+  
   public function query($sql, $params = [])
   {
     $this->statement = $this->conn->prepare($sql);

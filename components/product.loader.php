@@ -10,7 +10,7 @@ function get_name()
 function get_store($slug)
 {
    require 'controller/statements.php';
-   $storeQuery = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+   $storeQuery = new DB($config);
    $storeQuery->query("SELECT * FROM cracked_store where slug =:slug", ["slug" => $slug]);
    $store = $storeQuery->find();
    return $store;
@@ -19,7 +19,7 @@ function get_store($slug)
 function get_store_data($id)
 {
    require 'controller/statements.php';
-   $storeQuery = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+   $storeQuery = new DB($config);
    $storeQuery->query("SELECT * FROM cracked_store where id = :id", ["id" => $id]);
    $store = $storeQuery->find();
    return $store;
@@ -28,11 +28,11 @@ try {
    if (isset($_GET['name'])) {
       $name = $_GET['name'];
       $store = get_store($name);
-      $productQuery = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+      $productQuery = new DB($config);
       $productQuery->query("SELECT * FROM cracked_product WHERE store_id = :id", ["id" => $store['id']]);
       $products = $productQuery->findAll();
    } else {
-      $productQuery = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+      $productQuery = new DB($config);
       $productQuery->query($prep_statement['product']['retrieve']);
       $products = $productQuery->findAll();
    }
