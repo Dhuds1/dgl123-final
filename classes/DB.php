@@ -53,6 +53,15 @@ class DB
       die();
     }
   }
+  public function is_public($username){
+    if($username === null) {
+      return;
+    }
+    $sql = "SELECT * FROM cracked_user WHERE username = :username";
+    $param = [":username" => $username]; // Change :id to :username
+    $results = $this->queryAll($sql, $param);
+    return $results[0];
+}
   public function get_store($id)
   {
     $sql = "SELECT * FROM cracked_store WHERE user_id = :id";
@@ -60,7 +69,7 @@ class DB
     $results = $this->queryAll($sql, $param);
 
     if (count($results) > 0) {
-      return $results[0]['slug']; // Access the first row and the 'store_slug' column
+      return $results[0]; // Access the first row and the 'store_slug' column
     } else {
       return false;
     }
@@ -76,6 +85,15 @@ class DB
   {
       $sql = "SELECT * FROM cracked_user WHERE id = :id";
       $param = [":id" => $id];
+      $this->query($sql, $param);
+      $user = $this->find();
+      return $user;
+  } 
+  
+  public function get_username($username)
+  {
+      $sql = "SELECT * FROM cracked_user WHERE username = :username";
+      $param = [":username" => $username];
       $this->query($sql, $param);
       $user = $this->find();
       return $user;

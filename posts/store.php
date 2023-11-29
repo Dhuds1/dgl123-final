@@ -61,7 +61,9 @@
       <div class="store__info-buttons">
 
          <div class="store__contact-buttons">
+            <a href="profile?name=<?= $owner['username']?>">
                <button style="background-color: #<?= $store['highlight_color']?>" class="store__buttons-owner"><?= $owner['username']?></button>
+               </a>
             <div>
                <?php if($store['slug'] === $_SESSION['store']):?>
                   <a href="manage-store">Manage Store</a>

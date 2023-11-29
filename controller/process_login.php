@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user['username']; // Store the username in the session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['pfp'] = $user['picture'];
-        $_SESSION['store'] = $usersDB->get_store($user['id']);
+        $store = $usersDB->get_store($user['id']);
+        $_SESSION['store'] = $store['slug'];
         header("Location: ../account"); // Redirect to the dashboard or another secured page
         exit();
     } else {
