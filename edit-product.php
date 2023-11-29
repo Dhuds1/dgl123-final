@@ -74,8 +74,9 @@ if ($store['id'] !== $product['store_id']) {
       <!-- Your form fields go here, if any -->
       <input type="hidden" name="slug" value="<?= $product['slug'] ?>">
       <input type="hidden" name="id" value="<?= $product['id'] ?>">
-      <button class="<?= $product['is_visible'] === 1 ? 'green__button': ''?>" type="submit" name="hide">
-         <?php if($product['is_visible'] === 1): ?>
+      <input type="hidden" name="hide" value="true">
+      <button class="<?= $product['is_visible'] == 1 ? 'green__button': ''?>" type="submit" name="hide">
+         <?php if($product['is_visible'] == 1): ?>
             Product Visible
          <?php else: ?>
             Product Hidden
