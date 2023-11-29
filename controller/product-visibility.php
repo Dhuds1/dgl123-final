@@ -3,7 +3,7 @@ require "../autoloader.php";
 require "statements.php";
 require "../debug.php";
 
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (isset($_POST['hide'])) {

@@ -6,6 +6,6 @@ if (!$_SESSION['store']) {
 }
 function get_products() {
    require "controller/statements.php";
-   $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+   $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
    return $usersDB->get_products($_SESSION['user_id']);
 }

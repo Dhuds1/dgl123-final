@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if the new email is already used by another user
     if ($email !== $account['email']) {
-        $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+        $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
         if ($usersDB->check_value('email', $email)) {
             // Redirect back to the account page with an error message
             $_SESSION['error'] = "$email is already taken, please try another email.";

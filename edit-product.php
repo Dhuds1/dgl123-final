@@ -4,7 +4,7 @@ if (!isset($_GET['id']) || !isset($_GET['name'])) {
    header('Location: manage-products');
    exit();
 }
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
 $store = $usersDB->get_store($_SESSION['user_id']);
 $product = $usersDB->get_products_byID($store['id'], $_GET['id']);
 if ($store['id'] !== $product['store_id']) {

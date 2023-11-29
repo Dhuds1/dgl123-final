@@ -1,7 +1,7 @@
 <?php
 function get_account_information($account_id) {
     require "statements.php";
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
     $sql = "SELECT * FROM cracked_user WHERE id = :id";
     $param = [":id" => $_SESSION['user_id']];   
     $user_info = $usersDB->queryAll($sql, $param);
@@ -11,7 +11,7 @@ function get_account_information($account_id) {
 
 function update_user_info($user_id, $changes) {
     require "statements.php";
-    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+    $usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass']);
 
     // Update user information in the database based on the provided changes
     $sql = "UPDATE cracked_user SET ";
