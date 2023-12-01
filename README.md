@@ -31,3 +31,5 @@ Each pages store products are printed using the same product loader statement. T
 Another issue with the product loader is that it can only load each product after retriving all the information from the database, including the product image. This will be an issue when it comes to slower devices, connections and big loads on the server end, as it cannot load the following product before loading the blob. A way to improve this would be to make it so the blob can be loaded asyncronously, however, I do not know how to do this with PHP, and its a little outside the project scope.
 
 There is no search functionality, and no way of filtering results by price, first added, last added, quantities ect.
+
+users can add their own products, create their own stores, edit their profiles store fronts and products, toggle profile and product visibility, cannot toggle store visibility as of right now, I plan to add that later
