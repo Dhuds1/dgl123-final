@@ -1,4 +1,5 @@
 <?php
+// Checks so people cannot access this form without meeting conditions
 if (!$_SESSION['username']){
     header('Location: index');
     exit();
@@ -7,6 +8,7 @@ if($_SESSION['store']) {
     header('Location: index');
     exit();
 }
+// Displays error / success messages
 echo isset($_SESSION['error'])? $_SESSION['error']: '';
 if (isset($_SESSION['success']['clean'])) {
     echo "Availale! <br>";
@@ -19,7 +21,7 @@ if (isset($_SESSION['success']['slug'])) {
 
 ?>
 <?php if(!isset($_SESSION['success'])): ?>
-    <BR>    </BR>
+    <BR>
 <form action="controller/check-store.php" method="post">
     <label for="check_store_name">Store</label>
     <input name="check_store_name" id="check_store_name" type="text" value="<?= isset($_SESSION['store_name'])? $_SESSION['store_name']: '' ?>">

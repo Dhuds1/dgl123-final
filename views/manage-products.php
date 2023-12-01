@@ -65,71 +65,37 @@ $products = get_products();
       Product manager
       <a href="add-new-product">Add New</a>
    </h1>
+   <!-- loop through each product -->
    <?php foreach ($products as $product): ?>
       <div class="product-wrapper">
-            <div class="card__product-image">
-               <!-- Update the data-foo attribute to a class, and add a class to the file input -->
-               <img name="product-image" style="background-color:#<?= $store['highlight_color'] ?>"
-                  src="data:image/jpeg;base64,<?= base64_encode($product['image']) ?>" alt="">
-            </div>
-            <h2>
-               <?= $product['name'] ?>
-            </h2>
-            <h3>Description</h3>
-            <p class="text-area">
-               <?= isset($product['description']) ? $product['description'] : '' ?>
-            </p>
-            <h3>Specs</h3>
-            <p class="text-area">
-               <?= isset($product['specifications']) ? $product['specifications'] : 'None' ?>
-            </p>
-            <h3>Price</h3>
-            <p>
-               <?= $product['price'] ?>
-            </p>
-            <h3>Quantity</h3>
-            <p>
-               <?= isset($product['quantity']) ? $product['quantity'] : 'no limit' ?>
-            </p>
+         <div class="card__product-image">
+            <!-- Update the data-foo attribute to a class, and add a class to the file input -->
+            <img name="product-image" style="background-color:#<?= $store['highlight_color'] ?>"
+               src="data:image/jpeg;base64,<?= base64_encode($product['image']) ?>" alt="">
+         </div>
+         <h2>
+            <?= $product['name'] ?>
+         </h2>
+         <h3>Description</h3>
+         <p class="text-area">
+            <?= isset($product['description']) ? $product['description'] : '' ?>
+         </p>
+         <h3>Specs</h3>
+         <p class="text-area">
+            <?= isset($product['specifications']) ? $product['specifications'] : 'None' ?>
+         </p>
+         <h3>Price</h3>
+         <p>
+            <?= $product['price'] ?>
+         </p>
+         <h3>Quantity</h3>
+         <p>
+            <?= isset($product['quantity']) ? $product['quantity'] : 'no limit' ?>
+         </p>
          <div class="product-edit-container">
-            <a href="edit-product?id=<?= $product['id']?>&name=<?= $product['slug'] ?>" data="" class="product-edit-btn edit">Edit</a>
+            <a href="edit-product?id=<?= $product['id'] ?>&name=<?= $product['slug'] ?>" data=""
+               class="product-edit-btn edit">Edit</a>
          </div>
       </div>
    <?php endforeach; ?>
 </div>
-<script>
-   let hideBtns = document.querySelectorAll('.hide');
-   let removeBtns = document.querySelectorAll('.remove');
-   let editBtns = document.querySelectorAll('.edit');
-
-   hideBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-         let data = btn.getAttribute('data');
-
-         console.log(data + 'Hide button clicked');
-      });
-   });
-
-   editBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-         console.log('Edit button clicked');
-      });
-   });
-
-removeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        let productName = btn.getAttribute('product-name');
-        let productId = btn.getAttribute('data');
-
-        // Use a confirmation dialog
-        const userConfirmed = confirm(`Do you really want to delete ${productName}? This is irreversible.`);
-
-        if (userConfirmed) {
-            // Perform the deletion using AJAX
-            deleteProduct(productId, productName);
-        } else {
-            console.log(`User canceled deletion of product: ${productName}`);
-        }
-    });
-});
-</script>

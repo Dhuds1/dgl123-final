@@ -14,6 +14,7 @@
             <li class="nav-bar__item">
                 <a href="cart">🛒</a>
             </li>
+            <!-- if they're logged in display this -->
             <?php if (isset($_SESSION['username'])): ?>
 
                 <li id="accountDropDown" class="nav-bar__item accountDropDown">
@@ -32,6 +33,7 @@
                         <a class="disabled" href="">
                             <li class="dropdown__item dropdown__devider-both">Order History</li>
                         </a>
+                        <!-- if they have a store display this -->
                         <?php if ($_SESSION['store']): ?>
                             <span class="dropdown__list">
                                 <a href="store?name=<?= $_SESSION['store'] ?>">
@@ -47,6 +49,7 @@
                                     <li class="dropdown__list-item">Orders</li>
                                 </a>
                             </span>
+                            <!-- if they don't have a store display this -->
                         <?php else: ?>
                             <a href="create-store">
                                 <li>Create Store</li>
@@ -60,6 +63,7 @@
                         </a>
                     </ul>
                 </li>
+                <!-- if they're not logged in display this -->
             <?php else: ?>
                 <a href='login'>
                     <li class="nav-bar__item account no-border">

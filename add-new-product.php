@@ -1,18 +1,21 @@
 <?php
 require "loader.php";
+// if you don't have a store you cannot add products
 if (!isset($_SESSION['store'])) {
    header('Location: manage-products');
    exit();
 }
-$usersDB = new DB($config['database'], $config['accessor']['user'], $config['accessor']['pass'], 'cracked');
+$usersDB = new DB($config);
 $store = $usersDB->get_store($_SESSION['user_id']);
 ?>
+<!-- There weas a reason I did this, it wasn't working correctly so !IMPORTANT IT ALL!!!!!!!! HAHAHAHAHHAHHA -->
 <style>
    input.file__upload-image {
       display: none !important;
    }
 </style>
 <div class="wrapper display__grid">
+   <!-- checks for errors -->
    <div style="color: red;">
       <?= isset($_SESSION['errors']) ? implode('<br>', $_SESSION['errors']) : '' ?>
       <?php $_SESSION['errors'] = null ?>
@@ -34,6 +37,7 @@ $store = $usersDB->get_store($_SESSION['user_id']);
       </div>
 
       <label for="name">Product Name</label>
+      <!-- If there is an error, it will replace all these with the old values for user peace of mind -->
       <input type="text" id="name" name="name"
          value="<?= isset($_SESSION['old_values']) ? $_SESSION['old_values']['name'] : '' ?>" required>
 
@@ -59,8 +63,8 @@ $store = $usersDB->get_store($_SESSION['user_id']);
       <button class="green__button" type="submit">Save</button>
    </form>
 </div>
-
 <script>
+   // image preview code, YES I HAVE IT IN A MILLION PLACES, AND YES I NEED TO MAKE IT A COMPONENENT
    document.getElementById('reset').addEventListener('click', e => {
       window.location.reload();
    });
@@ -81,7 +85,7 @@ $store = $usersDB->get_store($_SESSION['user_id']);
          reader.readAsDataURL(input.files[0]);
       }
    }
-
+   // only allow numbers and periods, should make it so it automatically add a period so users cannot add more than 1
    function validateNumber(input) {
       // Remove non-numeric characters from the input value
       input.value = input.value.replace(/[^0-9.]/g, '');

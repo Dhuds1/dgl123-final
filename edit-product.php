@@ -74,6 +74,7 @@ if ($store['id'] !== $product['store_id']) {
       <!-- Your form fields go here, if any -->
       <input type="hidden" name="slug" value="<?= $product['slug'] ?>">
       <input type="hidden" name="id" value="<?= $product['id'] ?>">
+      <!-- changes the color and inner text based on if product is visible or hidden -->
       <button class="<?= $product['is_visible'] === 1 ? 'green__button': ''?>" type="submit" name="hide">
          <?php if($product['is_visible'] === 1): ?>
             Product Visible
@@ -91,6 +92,7 @@ if ($store['id'] !== $product['store_id']) {
    document.getElementById('reset').addEventListener('click', e => {
       window.location.reload();
    })
+   // another image preview....
    function handleLogoUpload(input) {
       const logoPreview = document.getElementById('product-image');
 

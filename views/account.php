@@ -17,6 +17,7 @@ $account = get_account_information($_SESSION['user_id'])
       <h2>Profile Picture</h2>
       <h3>aspect ration 1:1</h3>
       <div class="account_profile-picture">
+        <!-- changed the file upload to an icon -->
         <label for="profile_picture" class="upload-label">
           <div class="add-icon-center">
             <i class="fa-solid fa-image fa-xl" style="color: white;"></i> <span>Upload</span>
@@ -25,13 +26,14 @@ $account = get_account_information($_SESSION['user_id'])
         <input class="file__upload-image" type="file" id="profile_picture" name="profile_picture" accept="image/jpeg"
           onchange="handlePFPUpload()">
         <img id="pfpPreview"
-          src="data:image/jpeg;base64,<?= isset($account['picture'])?base64_encode($account['picture']):'' ?>"
-          alt="">
+          src="data:image/jpeg;base64,<?= isset($account['picture']) ? base64_encode($account['picture']) : '' ?>" alt="">
       </div>
   </div>
   <div class="account__form-info">
+    <!-- display user's username || not changeable, thus disabled -->
     <label for="username">Username</label>
     <input name="username" id="username" type="text" value=<?= $account['username']; ?> disabled>
+    <!-- Options for profile visibility, is they want other people to see their profile | defualt disabled -->
     <label for="publicProfile">Public Profile</label>
     <div>
       <input type="checkbox" id="publicProfile" name="publicProfile" value="1">
@@ -44,11 +46,12 @@ $account = get_account_information($_SESSION['user_id'])
     <label for="email">Email</label>
     <input type="email" name="email" id="email" value="<?= $account['email']; ?>">
     <div>
-
+      <!-- SUBMISSION FOR ACCOUNT INFO FORM -->
       <button class="" type="reset">Reset</button>
       <button class="green__button" type="submit">Submit</button>
     </div>
   </div>
+  <!-- FORM ISNT WORKING RIGHT NOW -->
   </form>
   <form action="change_password.php">
     <h2>Change Password</h2>
@@ -69,6 +72,7 @@ $account = get_account_information($_SESSION['user_id'])
 </div>
 </div>
 <script>
+  // JS FOR IMAGE PREVIEW
   function handlePFPUpload() {
     const input = document.getElementById('profile_picture');
     const logoPreview = document.getElementById('pfpPreview');
@@ -99,7 +103,7 @@ $account = get_account_information($_SESSION['user_id'])
   document.getElementById('publicProfile').addEventListener('click', () => {
     publicProfile();
   });
-
+  // JS FOR SWITCHING LABEL FOR PROFILE VISIBILITY
   function publicProfile(publicView) {
     const checkbox = document.getElementById('publicProfile');
     if (publicView === 'yes') checkbox.checked = true;

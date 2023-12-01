@@ -14,6 +14,7 @@ function get_store_data()
     return $store_info;
 }
 
+// gathers all the changes and pends them to an array
 function update_store_data($data)
 {
     require "statements.php";
@@ -55,7 +56,7 @@ function update_store_data($data)
     $sql .= " WHERE user_id = :id";
     $params[':id'] = $_SESSION['user_id'];
 
-    // Execute the update query
+    // update values
     $usersDB->query($sql, $params);
     $_SESSION['success'] = "Updated Information";
     header('Location: ../manage-store');

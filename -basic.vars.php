@@ -1,5 +1,6 @@
 <?php
 // USER VARS
+// My cute little temporary variable form
 $user_name = "Username";
 $addto_user_cart = "send this information to user cart";
 // STORE VARS

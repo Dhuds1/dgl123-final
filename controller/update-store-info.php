@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve submitted form data
     function sanitize_color($color)
     {
-        // Remove any non-alphanumeric characters
+        // Remove any non-hex value characters
         return preg_replace('/[^a-zA-Z0-9]/', '', $color);
     }
     $description = $_POST['description'];
@@ -24,9 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $secColor = sanitize_color($_POST['sec_color']);
     $triColor = sanitize_color($_POST['tri_color']);
     require "../debug.php";
-    // Check if values have changed
-    $changes = [];
 
+    $changes = [];
+    
+    // Check if values have changed
     if (hasChanged($originalStoreData['description'], $description)) {
         $changes['description'] = $description;
     }
@@ -53,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach ($socials as $key => $value) {
         list($platform, $index) = explode("_", $key);
     
-        // Check if the value has changed
         if (hasChanged($originalStoreData[$key], $value)) {
             $changes[$key] = $value;
         }
@@ -97,17 +97,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    // If no changes, redirect to manage store with success message 
     if (empty($changes)) {
         $_SESSION['success'] = "No changes made";
         header('Location: ../manage-store');
     }
 
-    // Now $changes array contains only the fields that have changed
-    // Perform the database update with $changes
-    // Add your code here to update the database with $changes
+    /// If changes, update store
     update_store_data($changes);
-
-    // Redirect to the manage store page
-    header('Location: ../manage-store');
 }
 ?>

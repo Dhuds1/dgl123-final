@@ -1,4 +1,5 @@
 <?php
+// Validation 
 if(!isset($_SESSION['store'])){
   header('Location: index');
   exit();
@@ -14,6 +15,7 @@ $store = $getStoreData();
 <?php $_SESSION['success'] = null ?>
 <form action="controller/update-store-info.php" method="post" enctype="multipart/form-data">
   <div class="store__header-wrapper">
+    <!-- I WAS TIRED OF MY HUGE CSS FILE, one day I'll reformat it to SASS for better redability -->
     <style>
       .nav-bar-main {
         position: absolute;
@@ -157,6 +159,7 @@ $store = $getStoreData();
             <label for="social_<?= $i ?>">
               <?= $i ?>
             </label>
+            <!-- checks which social it is, and makes that option selected -->
             <select name="social_<?= $i ?>" id="social_<?= $i ?>" onchange="toggleInputRequired(this)">
               <option value="none" <?= empty($store["social_$i"]) ? 'selected' : '' ?>>None</option>
               <option value="reddit" <?= $store["social_$i"] === 'reddit' ? 'selected' : '' ?>>Reddit</option>
@@ -180,7 +183,7 @@ $store = $getStoreData();
     </div>
   </div>
 </form>
-
+<!-- I was tired of going back and forth, I needed to get the features out, i'll refactor eventually. Everything works -->
 <script>
   document.getElementById('reset').addEventListener('click', () => {
     window.location.reload();
@@ -201,7 +204,7 @@ $store = $getStoreData();
   window.addEventListener('load', function () {
     updateCharacterCount();
   });
-
+  // Character counter
   function updateCharacterCount() {
     var remainingChars = textarea.maxLength - textarea.value.length;
     charCount.textContent = remainingChars + " / 100";
@@ -211,19 +214,17 @@ $store = $getStoreData();
     addHashToColorInput('sec_color');
     addHashToColorInput('tri_color');
   };
-
+  // Adds hashtag / pound sign for my BOOMERS to the color input
   function addHashToColorInput(inputId) {
     const inputElement = document.getElementById(inputId);
     inputElement.value = '#' + inputElement.value;
   }
+  // only accespt hex values, I think that its.
   function validateHexColorInput(inputElement) {
     // Remove non-hex characters and ensure '#' is at the beginning
     inputElement.value = '#' + inputElement.value.replace(/[^a-fA-F0-9]/g, '').slice(0, 6);
   }
-  function updateCharacterCount() {
-    var remainingChars = textarea.maxLength - textarea.value.length;
-    charCount.textContent = remainingChars + " / 100";
-  }
+  // Image preview
   function handleLogoUpload() {
     const input = document.getElementById('logo_image');
     const logoPreview = document.getElementById('logoPreview');
@@ -241,6 +242,7 @@ $store = $getStoreData();
       reader.readAsDataURL(input.files[0]);
     }
   }
+  // image preview
   function handleBannerUpload() {
     const input = document.getElementById('banner_image');
     const bannerPreview = document.getElementById('bannerPreview');

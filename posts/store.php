@@ -17,6 +17,7 @@
                } 
                ?>
               <li>
+               <!-- check for the social icon, use the icon -->
                 <a href="<?= $store["social_link_$i"] ?>">
                   <?php
                   switch ($store["social_$i"]) {

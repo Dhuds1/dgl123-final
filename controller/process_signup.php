@@ -30,26 +30,27 @@ $_SESSION['old_values'] = [
 
 $errors = []; // Initialize an array to store errors
 
-// Add more validation as needed
+// checks if these are empty
 if (empty($first_name) || empty($last_name) || empty($username) || empty($email) || empty($email_confirm) || empty($password) || empty($password_confirm)) {
     $errors[] = "All fields are required. Please fill out the entire form.";
 }
-
+// checks if these match
 if ($email !== $email_confirm) {
     $errors[] = "Email's do not match.";
 }
-
+// checks if these match
 if ($password !== $password_confirm) {
     $errors[] = "Password's do not match.";
 }
-
-// Assuming $config is defined somewhere in your code
+// Initiate DB connection
 $usersDB = new DB($config);
 
+// checks for value in db
 if ($usersDB->check_value('email', $email)) {
     $errors[] = "$email is already taken, please try another email.";
 }
 
+// checks for value in db
 if ($usersDB->check_value('username', $username)) {
     $errors[] = "$username is already taken, please try another username.";
 }
@@ -66,7 +67,6 @@ if (!empty($errors)) {
 create_user($_POST, $usersDB);
 
 // Redirect and unset session variables
-
 header("Location: ../login");
 unset($_SESSION['old_values']);
 
