@@ -82,7 +82,7 @@ $products = get_products();
          </p>
          <h3>Specs</h3>
          <p class="text-area">
-            <?= isset($product['specifications']) ? $product['specifications'] : 'None' ?>
+            <?= isset($product['specification']) && $product['specification'] != null ? $product['specification'] : 'None' ?>
          </p>
          <h3>Price</h3>
          <p>

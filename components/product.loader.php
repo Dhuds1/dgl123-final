@@ -33,7 +33,7 @@ try {
       $products = $productQuery->findAll();
    } else {
       $productQuery = new DB($config);
-      $productQuery->query($prep_statement['product']['retrieve']);
+      $productQuery->query("SELECT * FROM cracked_product WHERE is_visible = 1");
       $products = $productQuery->findAll();
    }
 
@@ -48,10 +48,6 @@ try {
 <div class="product__wrapper">
    <!-- Loop through each product that is retrived from the DATABASE -->
    <?php foreach ($products as $product): ?>
-      <?php
-      if ($product['is_visible'] === 1): ?>
-
-
 
       <!-- I don't remember why I am retriving the store ID... But its most likely important!.. -->
       <?php $store = get_store_data($product['store_id']) ?>
@@ -90,10 +86,9 @@ try {
             </h2>
          </a>
          <!-- NO functionality right now, but will add the product to the users cart -->
-         <a href="<?= $user_cart ?>">
+         <a href="#">
             <button class="card__btn-cart">&plus; Add To Cart</button>
          </a>
       </div>
-   <?php endif ; ?>
    <?php endforeach; ?>
 </div>

@@ -23,6 +23,8 @@
                         <a href="profile">
                             <li class="dropdown__item account">
                                 <div class="profile__picture-menu grid__row--span-2 grid__align--center">
+                                <!-- for some reason this now works and doesn't cause header issues -->
+                                <img src="data:image/jpeg;base64,<?= isset($_SESSION['pfp'])?base64_encode($_SESSION['pfp']):'' ?>" alt="">
                                 </div>
                                 <h3>Welcome, <b>
                                         <?= $_SESSION['username'] ?>

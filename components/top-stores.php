@@ -4,7 +4,7 @@ require "controller/statements.php";
 //QUERY DB FOR STORES    
 $stores = new DB($config);
 // RETURNS THE 4 STORES WITH THE MOST ITEMS
-$stores->query($prep_statement['store']['retrieve']." ORDER BY items DESC LIMIT 4");
+$stores->query("SELECT * FROM cracked_store ORDER BY items DESC LIMIT 4");
 $results = $stores->findAll();
 ?>
 <?php foreach ($results as $store => $data): ?>
